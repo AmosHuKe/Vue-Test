@@ -3,8 +3,8 @@
 ## 简介
 
 ```
-非常基础的Vue练习
-环境：Node.js + Vue2.0 + Element-Ui
+非常基础的 `Vue` 练习
+Node.js + Vue2.0 + Element-Ui
 ```
 
 ## 启动项目
