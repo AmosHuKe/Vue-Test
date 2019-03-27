@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TodoList from './page/TodoList/TodoList.vue'
+import TodoList from './Pages/TodoList/TodoList.vue'
 
 export default {
     name: 'MainIndex',
