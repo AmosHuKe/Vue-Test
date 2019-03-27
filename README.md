@@ -3,7 +3,7 @@
 ## 简介
 
 ```
-非常基础的 `Vue` 练习
+非常基础的 Vue2.0 练习
 Node.js + Vue2.0 + Element-Ui
 ```
 
