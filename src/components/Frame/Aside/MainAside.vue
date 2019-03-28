@@ -1,27 +1,46 @@
 <template>
     <div id="MainAside">
-            <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-time"></i>
-                    <span slot="title">我的练习</span>
-                </template>
-                <el-menu-item-group>
-                    <span slot="title">基础练习</span>
-                    <el-menu-item index="1-1-1">TodoList</el-menu-item>
-                </el-menu-item-group>
-                
-            </el-submenu>
+        <!-- 侧边栏 -->
+        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+            <AsideMenu :menuList="this.urlList"></AsideMenu>
             
         </el-menu>
     </div>
 </template>
 
 <script>
+import AsideMenu from './AsideMenu.vue'; //引进菜单模板
+
 export default {
     name: 'MainAside',
+    components: {
+        AsideMenu
+    },
     data() {
         return {
+            urlList: [
+                {
+                    menuId:"0",
+                    menuName: "首页", //父名
+                    menuUrl: "/", //父URL
+                    menuIcon: "el-icon-time", //Icon
+                    
+                },
+                {
+                    menuId:"1",
+                    menuName: "练习", //父名
+                    menuUrl: "", //父URL
+                    menuIcon: "el-icon-time", //Icon
+                    children: [
+                        {
+                            menuId:"1.1",
+                            menuName: "TodoList", //子名
+                            menuUrl: "/todolist", //子URL
+                            menuIcon: "el-icon-time", //Icon
+                        }
+                    ]
+                },
+            ], //菜单配置
             isCollapse: false
         }
     },

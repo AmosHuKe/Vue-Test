@@ -13,7 +13,7 @@
         <el-container>
           <!-- 主要 -->
           <el-main>
-            <MainIndex></MainIndex>
+            <router-view></router-view> <!-- 路由 -->
           </el-main>
         </el-container>
       </el-container>
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import MainIndex from './components/MainIndex.vue' //主要
+//import MainIndex from './components/MainIndex.vue' //主要
 import MainHeader from './components/Frame/Header/MainHeader.vue' //顶部
 import MainAside from './components/Frame/Aside/MainAside.vue' //侧边栏
 
 export default {
   name: 'App',
   components: {
-    MainIndex, //主要
+    //MainIndex, //主要
     MainHeader, //顶部
     MainAside, //侧边
   }
