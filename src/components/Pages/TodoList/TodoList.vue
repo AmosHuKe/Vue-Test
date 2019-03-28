@@ -40,12 +40,12 @@
                 width="160px">
                 <template slot-scope="dataList">
                     <el-button
-                    size="mini"
-                    @click="handleEdit(dataList.$index, dataList.row)">编辑</el-button>
+                        size="mini"
+                        @click="handleEdit(dataList.$index, dataList.row)">编辑</el-button>
                     <el-button
-                    size="mini"
-                    type="danger"
-                    @click="handleDelete(dataList.$index, dataList.row)">删除</el-button>
+                        size="mini"
+                        type="danger"
+                        @click="handleDelete(dataList.$index, dataList.row)">删除</el-button>
                 </template>
             </el-table-column>
 
