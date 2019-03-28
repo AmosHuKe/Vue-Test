@@ -9,9 +9,16 @@ Node.js + Vue2.0 + Element-Ui
 
 ## 启动项目
 ```
+# 克隆项目 
 git clone git@github.com:AmosHuKe/Vue-Test.git  
-cd Vue-Test  
+  
+# 进入目录  
+cd Vue-Test
+  
+# 安装依赖  
 npm install   
+  
+# 启动项目 localhost:8080  
 npm run serve 
 ```
 
