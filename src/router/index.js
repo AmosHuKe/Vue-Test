@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 // 跳转如 <router-link to="/home">Home</router-link>
 
 export default new VueRouter({
-    mode: 'history', //history模式
+    //mode: 'history', //history模式
     routes: [   //路由信息
         {
             path:"/",
