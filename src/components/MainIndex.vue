@@ -4,7 +4,7 @@
         <el-row type="flex" justify="center">
             <el-col class="text-align" :xs="24" :sm="24" :md="24" :lg="24">
                 <!-- 走马灯 -->
-                <el-carousel height="500px" :interval="5000" arrow="click">
+                <el-carousel :height="carouselHeightL" :interval="5000" arrow="click">
                     <el-carousel-item v-for="item in 4" :key="item">
                     <h3>😄 {{ msg }} {{ item }} </h3>
                     </el-carousel-item>
@@ -21,7 +21,8 @@ export default {
     name: 'MainIndex',
     data () {
         return {
-            msg: 'Hello~'
+            msg: 'Hello~',
+            carouselHeightL: '500px', //走马灯高度
         }
     }
 }

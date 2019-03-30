@@ -2,9 +2,10 @@
     <div id="TodoList">
         <!-- 输入框 -->
         <el-input type="text" v-model="inputText">
+            <el-badge slot="prefix" class="mark" :value="dataList.length" />
             <el-tooltip class="item" slot="append" effect="dark" content="提交你的内容生成 TodoList" placement="top-end">
                 <el-button type="primary" @click="buttonSubmit()">
-                    提交 <el-badge class="mark" :value="dataList.length" />
+                    提交
                 </el-button>
             </el-tooltip>
             <el-tooltip class="item" slot="append" effect="dark" content="撤回最近一次删除的内容" placement="top-end">
@@ -42,10 +43,21 @@
                     <el-button
                         size="mini"
                         @click="handleEdit(dataList.$index, dataList.row)">编辑</el-button>
-                    <el-button
-                        size="mini"
-                        type="danger"
-                        @click="handleDelete(dataList.$index, dataList.row)">删除</el-button>
+                    <!-- 确定是否删除 -->
+                    <el-popover
+                        placement="top"
+                        width="auto"
+                        v-model="dataList.showDel">
+                        <p>确定删除吗？</p>
+                        <div style="text-align: right; margin: 0">
+                            <el-button 
+                                type="danger" 
+                                size="mini" 
+                                @click="handleDelete(dataList.$index, dataList.row),dataList.showDel=flase"
+                                >确定</el-button>
+                        </div>
+                        <el-button class="delSty" type="danger" size="mini" slot="reference">删除</el-button>
+                    </el-popover>
                 </template>
             </el-table-column>
 
@@ -64,6 +76,7 @@ export default {
             dataList:[], //List todoText  todoTime
             oldList:{}, //需要撤回的List
             oldListIndex: '', //需要撤回的List坐标
+            
         }
     },
     methods: {
@@ -79,7 +92,8 @@ export default {
             //加入数据
             _this.dataList.push({
                 todoText: _this.inputText,
-                todoTime: dateTime
+                todoTime: dateTime,
+                showDel: false, //确定删除是否显示
             })
 
             _this.inputText = "" //清空
@@ -130,5 +144,12 @@ export default {
     .list-table{
         width: 100%;
         margin-top: 24px;
+    }
+    .delSty{
+        margin-left: 4px;
+    }
+    .mark{
+        line-height: 40px;
+        margin-top: 4px;
     }
 </style>
