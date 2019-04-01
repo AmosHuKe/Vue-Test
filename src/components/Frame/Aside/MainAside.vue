@@ -22,8 +22,8 @@ export default {
                 {
                     menuId:"0",
                     menuName: "首页", //父名
-                    menuUrl: "/", //父URL
-                    menuIcon: "el-icon-time", //Icon
+                    menuUrl: "/Banner", //父URL
+                    menuIcon: "el-icon-location-outline", //Icon
                     
                 },
                 {
