@@ -18,8 +18,14 @@ cd Vue-Test
 # 安装依赖  
 npm install   
   
-# 启动项目 localhost:8080  
+# 启动项目 localhost:9099 
 npm run serve 
+
+```
+
+```
+# 项目打包
+npm run build
 ```
 
 ## 目录
