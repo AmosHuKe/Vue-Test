@@ -24,7 +24,7 @@ npm run serve
 ```
 
 ```
-# 项目打包
+# 项目打包  /dist
 npm run build
 ```
 
