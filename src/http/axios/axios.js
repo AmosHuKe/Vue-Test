@@ -1,7 +1,9 @@
 import axios from 'axios';
  
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://localhost:8080/dataservice/'; //配置请求地址
+axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
+axios.defaults.headers.post['Content-type'] = 'application/json';
+axios.defaults.headers.get['Content-type'] = 'application/json';
  
  
 // //http request 拦截器

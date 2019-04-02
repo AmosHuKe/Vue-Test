@@ -6,7 +6,8 @@ module.exports = {
      * baseUrl: process.env.NODE_ENV==='production'?"https://cdn.didabisai.com/front/":'front/',
      */
     // 基本路径
-    baseUrl: '/',
+    //baseUrl: '/',
+    publicPath: '/',
     // 输出文件目录
     outputDir: 'dist',
     // eslint-loader 是否在保存的时候检查
@@ -55,8 +56,9 @@ module.exports = {
         https: false,
         hotOnly: false,
         proxy: {
-            "/dataservice": {
-                target: "http://localhost:8080",
+            "/oauth2service": {
+                target: "http://192.168.1.5:8080",
+                changeOrigin: true, //是否跨域
                 secure: false
             }
         }, // 设置代理
