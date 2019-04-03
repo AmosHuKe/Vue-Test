@@ -1,10 +1,16 @@
 import axios from 'axios';
- 
+// 引入 Qs是为了把json格式，转为formdata 的数据格式
+import Qs from 'qs'
+
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
-axios.defaults.headers['Content-type'] = 'application/json;charset=UTF-8'; //添加headers
-axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
-axios.defaults.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE';
+axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded'; //添加headers
+axios.defaults.transformRequest = [function (data) {
+  // 对 data 进行任意转换处理
+  console.log(Qs.stringify(data))
+  return Qs.stringify(data);
+}]
+
 axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6c2VjcmV0';
  
  
