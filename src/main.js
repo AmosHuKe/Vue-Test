@@ -13,7 +13,7 @@ axios.defaults.withCredentials = false
 Vue.prototype.Common = Common; //配置全局使用公共文件
 
 //全局配置axios
-import {post,fetch,patch,put} from "./http/axios/axios.js";
+import {post,fetch,patch,put} from "./plugins/http/axios/axios.js";
 Vue.prototype.$axios=axios;
 Vue.prototype.$post=post;
 Vue.prototype.$fetch=fetch;

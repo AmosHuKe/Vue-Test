@@ -2,8 +2,10 @@ import axios from 'axios';
  
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
-axios.defaults.headers.post['Content-type'] = 'application/json';
-axios.defaults.headers.get['Content-type'] = 'application/json';
+axios.defaults.headers['Content-type'] = 'application/json;charset=UTF-8'; //添加headers
+axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE';
+axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6c2VjcmV0';
  
  
 // //http request 拦截器
@@ -81,11 +83,11 @@ export function fetch(url,params={}){
 export function post(url,data = {}){
   return new Promise((resolve,reject) => {
     axios.post(url,data)
-      .then(response => {
-        resolve(response.data);
-      },err => {
-        reject(err)
-      })
+    .then(response => {
+      resolve(response.data);
+    },err => {
+      reject(err)
+    })
   })
 }
  
