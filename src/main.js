@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ElementUI from 'element-ui'; //Element-UI
-import 'element-ui/lib/theme-chalk/index.css'; //Element-UI样式
-import Common from './components/Common/Common.js' //公共文件
-import router from "./router/index.js" //路由
 import axios from 'axios' //axios
 
+import ElementUI from 'element-ui'; //Element-UI
+import 'element-ui/lib/theme-chalk/index.css'; //Element-UI样式
+
+import './plugins/PurpleAdmin/css/style.css'; //PurpleAdmin样式
+
+import Common from './components/Common/Common.js' //公共文件
+import router from "./router/index.js" //路由
 
 
 axios.defaults.withCredentials = false

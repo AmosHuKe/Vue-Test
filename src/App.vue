@@ -48,9 +48,9 @@ export default {
   padding-top: 40px;
 }
 a {
-  text-decoration:none;
+  text-decoration:none !important;
 }
 a:hover{
-  text-decoration:none;
+  text-decoration:none !important;
 }
 </style>

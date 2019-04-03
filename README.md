@@ -46,7 +46,7 @@ npm run build
 │   │   ├── home（例）  // 模块划分文件夹  
 │   │   ├── user（例）  // 模块划分文件夹  
 │   └── MainIndex.vue  // 项目主入口文件  
-├── plugins  // 项目相关配置文件夹 
+├── plugins  // 项目相关配置及插件文件夹 
 │   └── http  // 网络请求相关配置
 ├── router  // 路由配置文件夹  
 │   └── index.js  // 路由配置文件  

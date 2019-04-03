@@ -151,5 +151,6 @@ export default {
     .mark{
         line-height: 40px;
         margin-top: 4px;
+        background-color: transparent !important;
     }
 </style>
