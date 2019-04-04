@@ -3,13 +3,13 @@ import axios from 'axios';
 import Qs from 'qs'
 
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
+axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址
 axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded'; //添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
   return Qs.stringify(data);
 }]
-axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6c2VjcmV0';
+axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJqWEU1cmwxd3NSbFVwRE9tRnJQM1k2OFEvUC9kSUk4L3hxeEJlMlBkM3FFSFdX'; //授权服务器
  
  
 // //http request 拦截器
@@ -59,34 +59,36 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6c2VjcmV0';
 /**
  * 封装get方法
  * @param url
- * @param data
+ * @param params
  * @returns {Promise}
  */
  
 export function fetch(url,params={}){
   return new Promise((resolve,reject) => {
-    axios.get(url,{
-      params:params
+    axios.get(url,{  
+      params: params 
     })
-      .then(response => {
-        resolve(response.data);
-      })
-      .catch(err => {
-        reject(err)
-      })
+    .then(response => {
+      resolve(response.data);
+    })
+    .catch(err => {
+      reject(err)
+    })
   })
 }
  
 /**
  * 封装post请求
  * @param url
- * @param data
+ * @param params
  * @returns {Promise}
  */
  
-export function post(url,data = {}){
+export function post(url,params = {}){
   return new Promise((resolve,reject) => {
-    axios.post(url,data)
+    axios.post(url,{  
+      params: params 
+    })
     .then(response => {
       resolve(response.data);
     },err => {

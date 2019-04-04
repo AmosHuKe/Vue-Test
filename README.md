@@ -48,8 +48,10 @@ npm run build
 │   └── MainIndex.vue  // 项目主入口文件  
 ├── plugins  // 项目相关配置及插件文件夹 
 │   └── http  // 网络请求相关配置
+│   └── api  // 接口api
 ├── router  // 路由配置文件夹  
 │   └── index.js  // 路由配置文件  
-├── style  // scss 样式存放目录（待定，选用less或scss）   
+├── style  // scss 样式存放目录（待定，选用less或scss）  
+├── lib  // 第三方插件   
 ```
 
