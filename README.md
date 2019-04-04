@@ -4,7 +4,7 @@
 
 ```
 非常基础的 Vue2.0 练习
-Node.js + Element-Ui + Vue2.0 + Vue-Router 
+Node.js + Vue2.0 + Element-Ui + Vue-Router + Axios
 ```
 
 ## 启动项目
@@ -28,7 +28,7 @@ npm run serve
 npm run build
 ```
 
-## 目录
+## Src目录
 ```
 ├── App.vue  // APP入口文件
 ├── main.js  // 项目配置文件 
