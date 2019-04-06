@@ -1,4 +1,4 @@
-# Vue-Test
+﻿# Vue-Test
 
 ## 简介
 
@@ -51,7 +51,7 @@ npm run build
 │   └── api  // 接口api
 ├── router  // 路由配置文件夹  
 │   └── index.js  // 路由配置文件  
-├── style  // scss 样式存放目录（待定，选用less或scss）  
+├── style  // scss 样式存放目录
 ├── lib  // 第三方插件   
 ```
 
