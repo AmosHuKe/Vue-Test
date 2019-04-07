@@ -43,7 +43,7 @@
                                     </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
-                                        <a href="javascript:;" class="auth-link text-black text-primary" @click="Showlogin()"><i class="mdi mdi-email-variant "></i> 短信登陆</a>
+                                        <a href="javascript:;" class="auth-link text-black text-primary" @click="showLogin()">短信登陆</a>
                                     </div>
                                     </div>
                                 </form>
@@ -57,8 +57,9 @@
                                                 type="text" 
                                                 name="tphone" 
                                                 class="form-control form-control-lg oBorder" 
-                                                id="tphone" v-model="tphone" 
-                                                @input="inputM()" 
+                                                id="tphone" 
+                                                v-model="tphone" 
+                                                @input="showYzm()" 
                                                 placeholder="手机号">
                                         </div>
                                     
@@ -81,7 +82,7 @@
                                     </div>
                                     <div class="my-2 d-flex justify-content-between align-items-center">
                                         <div class="form-check">
-                                            <a href="javascript:;" class="auth-link text-black userlogin text-primary" @click="Showlogin()"><i class="mdi mdi-account-circle"></i> 账号登陆</a>
+                                            <a href="javascript:;" class="auth-link text-black userlogin text-primary" @click="showLogin()">账号登陆</a>
                                         </div>
                                     </div>
                                     
@@ -130,16 +131,33 @@ export default {
     methods: {
         submitLogin() {
             //登录
-            getToken(this.mUserName, this.mPassWord)
-            .then((response)=>{
-                alert(JSON.stringify(response))
-            })
+            var _this = this
+            if(_this.loginShow){
+                //普通账号登录
+                console.log("普通账号登录")
+                getToken(_this.mUserName, _this.mPassWord)
+                .then((response)=>{
+                    alert(JSON.stringify(response))
+                })
+            }else {
+                //短信登录
+                console.log("短信登录")
+                getToken(_this.mUserName, _this.mPassWord)
+                .then((response)=>{
+                    alert(JSON.stringify(response))
+                })
+            }
+            
                 
         },
-        Showlogin(){
+        showLogin() {
             //普通账户和短信登录切换
             this.loginShow = !this.loginShow
             this.smsShow = !this.smsShow
+        },
+        showYzm() {
+            //是否显示短信验证码
+            this.yzmShow = true
         }
     }
     
