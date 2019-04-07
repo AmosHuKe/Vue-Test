@@ -20,7 +20,8 @@
                                             class="form-control form-control-lg oBorder"
                                             id="mUserName"
                                             v-model="mUserName"
-                                            :placeholder="userName_Pla">
+                                            :placeholder="userName_Pla"
+                                            :disabled="submitL">
                                     </div>
                                     <div class="form-group">
                                         <input 
@@ -28,7 +29,8 @@
                                             class="form-control form-control-lg oBorder"
                                             id="mPassWord"
                                             v-model="mPassWord"
-                                            :placeholder="passWord_Pla">
+                                            :placeholder="passWord_Pla"
+                                            :disabled="submitL">
                                     </div>
 
                                     <div class="mt-3">
@@ -60,7 +62,8 @@
                                                 id="tphone" 
                                                 v-model="tphone" 
                                                 @input="showYzm()" 
-                                                placeholder="手机号">
+                                                placeholder="手机号"
+                                                :disabled="submitL">
                                         </div>
                                     
                                     </div>
@@ -71,7 +74,8 @@
                                             class="form-control form-control-lg oBorder" 
                                             id="tyzm" 
                                             v-model="yzm" 
-                                            placeholder="验证码">
+                                            placeholder="验证码"
+                                            :disabled="submitL">
                                     </div>
                                     <div class="mt-3">
                                         <button
@@ -129,26 +133,82 @@ export default {
         }
     },
     methods: {
-        submitLogin() {
+        submitLogin(e) {
             //登录
             var _this = this
-            if(_this.loginShow){
-                //普通账号登录
-                console.log("普通账号登录")
-                getToken(_this.mUserName, _this.mPassWord)
-                .then((response)=>{
-                    alert(JSON.stringify(response))
-                })
-            }else {
-                //短信登录
-                console.log("短信登录")
-                getToken(_this.mUserName, _this.mPassWord)
-                .then((response)=>{
-                    alert(JSON.stringify(response))
-                })
+            if(_this.submitL){
+                //判断是否已经点击登录 防止重复请求登录
+                _this.loadingLogin(e, true) //开启锁
+                if(_this.loginShow){
+                    //普通账号登录
+                    //console.log("普通账号登录")
+                    getToken(_this.mUserName, _this.mPassWord)
+                    .then((response)=>{
+                    this.$message({
+                            message: '登录成功',
+                            type: 'success'
+                        })
+                        alert(JSON.stringify(response))
+                        _this.loadingLogin(e, false) //关闭锁
+                    })
+                    .catch(err => {
+                        // reject(err)
+                        this.$message.error('登录失败 '+err)    
+                        _this.loadingLogin(e, false) //关闭锁 
+                    })
+                    
+                }else {
+                    //短信登录
+                    //console.log("短信登录")
+                    getToken(_this.mUserName, _this.mPassWord)
+                    .then((response)=>{
+                    this.$message({
+                            message: '登录成功',
+                            type: 'success'
+                        })
+                        alert(JSON.stringify(response))
+                        _this.loadingLogin(e, false) //关闭锁
+                    })
+                    .catch(err => {
+                        // reject(err)
+                        this.$message.error('登录失败 '+err)
+                        _this.loadingLogin(e, false) //关闭锁
+                    })
+                }
+                
             }
             
+            
                 
+        },
+        loadingLogin(e, c){
+            /**
+             * 登录loading 动画
+             * @param   e 点击对象
+             * @param   c true:开启动画 false:关闭动画
+             */
+            var _this = this
+            if(_this.loginShow){
+                if(c && _this.submitL){
+                    _this.submitL = false; //loading锁
+                    let loadingT = '<i class="el-icon-loading"></i>';
+                    e.srcElement.innerHTML = loadingT;
+                }else if(!c){
+                    _this.submitL = true; //loading锁
+                    e.srcElement.innerHTML = "登 录";
+                }
+            }else if(_this.smsShow){
+                //短信登陆
+                if(c && _this.submitLsms){
+                    _this.submitLsms = false //loading锁
+                    let loadingT = '<i class="el-icon-loading"></i>'
+                    e.srcElement.innerHTML = loadingT
+                }else if(!c){
+                    _this.submitLsms = true //loading锁
+                    e.srcElement.innerHTML = "登 录"
+
+                }
+            }
         },
         showLogin() {
             //普通账户和短信登录切换

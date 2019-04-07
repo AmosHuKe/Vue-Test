@@ -27,17 +27,17 @@ export default new VueRouter({
             component: Lgoin
         },
         {
-            path: "/todolist",
+            path: "/vue/todolist",
             name: "todolist",
             component: TodoListIndex
         },
         {
-            path: "/Banner",
+            path: "/vue/Banner",
             name: "Banner",
             component: Banner
         },
         {
-            path:"/mainindex",
+            path:"/vue/mainindex",
             name: "mainindex",
             component: MainIndex
         },

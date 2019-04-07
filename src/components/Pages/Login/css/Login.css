@@ -1,28 +1,22 @@
 /**
- * index.html CSS
- * 鐧诲綍椤�
+ * Login CSS
+ * 登录样式
  */
 
-/* 寰俊棰滆壊 */
-.wechat{
-  color: #62b900;
-}
-a[class*="wechat"]:hover{
-  color: #62b900 !important;
-}
+/* 基本 */
 .buttonLoading{
     margin-left: 40%;
     width: 50px;
     padding-right: 24px;
     padding-left: 17px;
-    padding-top: 14px;
+    padding-top: 16px;
     -webkit-transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
     -moz-transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
     -ms-transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
     -o-transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
     transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
 }
-/* 鐧诲綍杈规 */
+/* 输入框及登录 */
 .auth-form-light{
   border-radius: 0.3125rem ;
   box-shadow: 0px 2px 0px rgba(170,170,170,0.1);
@@ -45,27 +39,7 @@ a[class*="wechat"]:hover{
     -o-transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
     transition: all 0.4s cubic-bezier(.57,.19,.51,.95);
 }
-/* 婊戝潡鏍峰紡 */
-.slider-item{
-  border: none !important;
-  border-radius: 2.5rem !important;
-  -webkit-box-shadow: 0 0 30px 0 rgba(43,86,112,.1) !important;
-  box-shadow: 0 0 30px 0 rgba(43,86,112,.1) !important;
-}
-.slider-bg{
-  border: none !important;
-  border-radius: 2.5rem !important;
-}
-.slider-btn{
-  border: none !important;
-  border-radius: 2.5rem !important;
-}
-.slider{
-  background: #3e4b5b;
-
-
-}
-/* 鎵嬫満  灏忎簬600px*/
+/* 600px*/
 @media screen and (max-width: 600px) {
     .content-wrapper{
       padding-right: 0px !important;
