@@ -21,7 +21,7 @@
                                             id="mUserName"
                                             v-model="mUserName"
                                             :placeholder="userName_Pla"
-                                            :disabled="submitL">
+                                            :disabled="!submitL">
                                     </div>
                                     <div class="form-group">
                                         <input 
@@ -30,7 +30,7 @@
                                             id="mPassWord"
                                             v-model="mPassWord"
                                             :placeholder="passWord_Pla"
-                                            :disabled="submitL">
+                                            :disabled="!submitL">
                                     </div>
 
                                     <div class="mt-3">
@@ -63,7 +63,7 @@
                                                 v-model="tphone" 
                                                 @input="showYzm()" 
                                                 placeholder="手机号"
-                                                :disabled="submitL">
+                                                :disabled="!submitL">
                                         </div>
                                     
                                     </div>
@@ -136,6 +136,20 @@ export default {
         submitLogin(e) {
             //登录
             var _this = this
+            if(_this.mUserName == ""){
+                _this.$message({
+                    message: '填写账号',
+                    type: 'warning'
+                })
+                return false
+            }
+            if(_this.mPassWord == ""){
+                _this.$message({
+                    message: '填写密码',
+                    type: 'warning'
+                })
+                return false
+            }
             if(_this.submitL){
                 //判断是否已经点击登录 防止重复请求登录
                 _this.loadingLogin(e, true) //开启锁
@@ -144,7 +158,7 @@ export default {
                     //console.log("普通账号登录")
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
-                    this.$message({
+                        _this.$message({
                             message: '登录成功',
                             type: 'success'
                         })
@@ -162,7 +176,7 @@ export default {
                     //console.log("短信登录")
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
-                    this.$message({
+                        _this.$message({
                             message: '登录成功',
                             type: 'success'
                         })

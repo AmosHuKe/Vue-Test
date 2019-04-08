@@ -3,7 +3,7 @@ import axios from 'axios';
 import Qs from 'qs'
 
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址
+axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
 axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded'; //添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
