@@ -52,6 +52,6 @@ npm run build
 ├── router  // 路由配置文件夹  
 │   └── index.js  // 路由配置文件  
 ├── style  // scss 样式存放目录
-├── lib  // 第三方插件   
+├── lib  // 第三方插件/组件
 ```
 
