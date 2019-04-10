@@ -4,7 +4,7 @@ import Qs from 'qs'
 
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
-axios.defaults.headers['Content-type'] = 'application/x-www-form-urlencoded'; //添加headers
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';//添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
   return Qs.stringify(data);
@@ -54,7 +54,15 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 //   }
 // )
  
+/**
+ * 获取登陆后的Token方法
+ * @returns access_token
+ */
  
+export function getAccess_Token(){
+  let access_token = this.$cookies.get("access_token")
+  return access_token
+}
  
 /**
  * 封装get方法
@@ -80,15 +88,12 @@ export function fetch(url,params={}){
 /**
  * 封装post请求
  * @param url
- * @param params
+ * @param data
  * @returns {Promise}
  */
- 
-export function post(url,params = {}){
+export function post(url,data = {}){
   return new Promise((resolve,reject) => {
-    axios.post(url,{  
-      params: params 
-    })
+    axios.post(url,data)
     .then(response => {
       resolve(response.data);
     },err => {
@@ -96,7 +101,7 @@ export function post(url,params = {}){
     })
   })
 }
- 
+
 /**
  * 封装patch请求
  * @param url

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import axios from 'axios' //axios
+import VueCookies from 'vue-cookies'
 
 import ElementUI from 'element-ui'; //Element-UI
 import 'element-ui/lib/theme-chalk/index.css'; //Element-UI样式
@@ -16,8 +17,9 @@ axios.defaults.withCredentials = false
 Vue.prototype.Common = Common; //配置全局使用公共文件
 
 //全局配置axios
-import {post,fetch,patch,put} from "./plugins/http/axios/axios.js";
+import {getAccess_Token,post,fetch,patch,put} from "./plugins/http/axios/axios.js";
 Vue.prototype.$axios=axios;
+Vue.prototype.$getAccess_Token=getAccess_Token;
 Vue.prototype.$post=post;
 Vue.prototype.$fetch=fetch;
 Vue.prototype.$patch=patch;
@@ -27,7 +29,7 @@ Vue.prototype.$put=put;
 
 Vue.config.productionTip = false
 
-
+Vue.use(VueCookies); //使用VueCookies
 Vue.use(ElementUI); //使用ElementUI
 
 new Vue({
