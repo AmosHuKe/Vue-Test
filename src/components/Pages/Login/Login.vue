@@ -160,12 +160,16 @@ export default {
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
                         //console.log(response)
-                        this.$cookies.set("access_token",response.access_token)
+                        let cookiesData= {
+                            "access_token" : response.access_token
+                            ,"username" : _this.mUserName
+                        }
+                        this.$cookies.set("userInfo",cookiesData) //存入cookie
                         _this.$message({
                             message: '登录成功',
                             type: 'success'
                         })
-                        alert(getUser()) //弹出获取的用户
+                        console.log((getUser())) //弹出获取的用户
                         _this.loadingLogin(e, false) //关闭锁
                     })
                     .catch(err => {

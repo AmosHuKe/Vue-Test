@@ -13,24 +13,21 @@ import router from "./router/index.js" //路由
 
 
 axios.defaults.withCredentials = false
-
-Vue.prototype.Common = Common; //配置全局使用公共文件
-
-//全局配置axios
-import {getAccess_Token,post,fetch,patch,put} from "./plugins/http/axios/axios.js";
-Vue.prototype.$axios=axios;
-Vue.prototype.$getAccess_Token=getAccess_Token;
-Vue.prototype.$post=post;
-Vue.prototype.$fetch=fetch;
-Vue.prototype.$patch=patch;
-Vue.prototype.$put=put;
-
-
-
 Vue.config.productionTip = false
 
 Vue.use(VueCookies); //使用VueCookies
 Vue.use(ElementUI); //使用ElementUI
+
+Vue.prototype.Common = Common; //配置全局使用公共文件
+
+//全局配置axios
+import {getUserinfo,post,fetch,patch,put} from "./plugins/http/axios/axios.js";
+Vue.prototype.$axios=axios;
+Vue.prototype.$getUserinfo=getUserinfo;
+Vue.prototype.$post=post;
+Vue.prototype.$fetch=fetch;
+Vue.prototype.$patch=patch;
+Vue.prototype.$put=put;
 
 new Vue({
   router, //配置路由

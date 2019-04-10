@@ -1,4 +1,4 @@
-import { getAccess_Token,post } from '../../../plugins/http/axios/axios.js' //引入axios封装方法
+import { getUserinfo,post } from '../../../plugins/http/axios/axios.js' //引入axios封装方法
 
 /**
  * 登陆获取Token
@@ -21,16 +21,15 @@ export function getToken(username,password){
 }
 
 /**
- * 获取登陆后的用户
- * @param url 请求接口
+ * 获取登陆后的用户信息
  * @returns {Promise}
  */
 export function getUser(){
-    let access_token = getAccess_Token()
+    let access_token = getUserinfo().access_token
     let datas = {
         access_token: access_token
     }
-    let e = post("/oauth/token",datas);
+    let e = post("/users/CurrentUser",datas);
     return e;
 }
 

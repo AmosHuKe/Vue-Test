@@ -1,6 +1,9 @@
+
 import axios from 'axios';
 // 引入 Qs是为了把json格式，转为formdata 的数据格式
 import Qs from 'qs'
+import VueCookies from 'vue-cookies'
+import ElementUI from 'element-ui'; //Element-UI
 
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
@@ -15,15 +18,15 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 // //http request 拦截器
 // axios.interceptors.request.use(
 //   config => {
-//     // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
+//     const token = VueCookies.get("access_token"); //
 //     config.data = JSON.stringify(config.data);
 //     config.headers = {
-//       /*'Content-Type':'application/x-www-form-urlencoded'*/
-//       'Content-Type':'application/json;charset=UTF-8'
+//       'Content-Type':'application/x-www-form-urlencoded'
+//       // 'Content-Type':'application/json;charset=UTF-8'
 //     }
-//     // if(token){
-//     //   config.params = {'token':token}
-//     // }
+//     if(token){
+//       config.params = {'access_token':token}
+//     }
 //     return config;
 //   },
 //   error => {
@@ -32,7 +35,7 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 // );
  
  
-//http response 拦截器
+// //http response 拦截器
  
 // axios.interceptors.response.use(
 //   response => {
@@ -45,7 +48,7 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 //     return response;
 //   },
 //   error => {
-//     Message({
+//     ElementUI.Message({
 //       Message:error.message,
 //       type:'error',
 //       duration:5*1000
@@ -55,13 +58,12 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 // )
  
 /**
- * 获取登陆后的Token方法
- * @returns access_token
+ * 获取登陆后的基本信息方法
+ * @returns access_token：token, username：用户名
  */
- 
-export function getAccess_Token(){
-  let access_token = this.$cookies.get("access_token")
-  return access_token
+export function getUserinfo(){
+  let Userinfo = VueCookies.get("userInfo");
+  return Userinfo;
 }
  
 /**

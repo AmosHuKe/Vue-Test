@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import VueCookies from 'vue-cookies'
 
 // 引入组件
 import Lgoin from "../components/Pages/Login/Login.vue" //登陆页
@@ -9,6 +10,7 @@ import TodoListIndex from "../components/Pages/TodoList/TodoListIndex.vue" //Tod
 
 // vue 使用 vueRouter
 Vue.use(VueRouter);
+Vue.use(VueCookies);
 
 // 在main.js 配置路由
 // 在App.vue 使用 <router-view></router-view>
