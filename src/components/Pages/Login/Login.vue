@@ -105,6 +105,7 @@
 <script>
 import {
     getToken,
+    getUser
 } from '../../../plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
 
 export default {
@@ -158,11 +159,13 @@ export default {
                     //console.log("普通账号登录")
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
+                        //console.log(response)
+                        this.$cookies.set("access_token",response.access_token)
                         _this.$message({
                             message: '登录成功',
                             type: 'success'
                         })
-                        alert(JSON.stringify(response))
+                        alert(getUser()) //弹出获取的用户
                         _this.loadingLogin(e, false) //关闭锁
                     })
                     .catch(err => {
@@ -176,11 +179,13 @@ export default {
                     //console.log("短信登录")
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
+                        //console.log(response)
+                        //将Token 存入cookies
+                        this.$cookies.set("access_token",response.access_token)
                         _this.$message({
                             message: '登录成功',
                             type: 'success'
                         })
-                        alert(JSON.stringify(response))
                         _this.loadingLogin(e, false) //关闭锁
                     })
                     .catch(err => {
