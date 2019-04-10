@@ -4,7 +4,7 @@
 
 ```
 非常基础的 Vue2.0 练习
-Node.js + Vue2.0 + Element-Ui + Vue-Router + Axios
+Node.js + Vue2.0 + Element-Ui + Vue-Router + Axios + Vue-Cookies
 ```
 
 ## 启动项目
