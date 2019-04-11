@@ -28,7 +28,7 @@ npm run serve
 npm run build
 ```
 
-## Src目录
+## Src目录概述
 ```
 ├── App.vue  // APP入口文件
 ├── main.js  // 项目配置文件 
