@@ -1,3 +1,7 @@
+let path = require('path')
+function resolve (dir) {
+  return path.join(__dirname, dir)
+} //绝对路径
 
 module.exports = {
     /** 区分打包环境与开发环境
@@ -17,7 +21,10 @@ module.exports = {
    //compiler: false,
     // webpack配置
     // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-    chainWebpack: () => {},
+    chainWebpack: config => {
+        config.resolve.alias
+          .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
+    },
     configureWebpack: () => {},
     //如果想要引入babel-polyfill可以这样写
     // configureWebpack: (config) => {
@@ -68,4 +75,5 @@ module.exports = {
     pluginOptions: {
         // ...
     }
+    
 }
