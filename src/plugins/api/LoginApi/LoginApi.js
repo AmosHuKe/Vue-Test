@@ -1,4 +1,4 @@
-import { getUserinfo,post } from '../../../plugins/http/axios/axios.js' //引入axios封装方法
+import { getUserinfo,post } from '@/plugins/http/axios/axios.js' //引入axios封装方法
 
 /**
  * 登陆获取Token

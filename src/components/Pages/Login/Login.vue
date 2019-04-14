@@ -106,7 +106,7 @@
 import {
     getToken,
     getUser
-} from '../../../plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
+} from '@/plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
 
 export default {
     name: 'Login',

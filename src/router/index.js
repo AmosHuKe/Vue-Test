@@ -3,10 +3,10 @@ import VueRouter from "vue-router";
 import VueCookies from 'vue-cookies'
 
 // 引入组件
-import Lgoin from "../components/Pages/Login/Login.vue" //登陆页
-import MainIndex from "../components/MainIndex.vue" //主要页面，首页
-import Banner from "../components/Pages/Banner/Banner.vue" //轮播首页
-import TodoListIndex from "../components/Pages/TodoList/TodoListIndex.vue" //TodoList 页
+import Lgoin from "@/components/Pages/Login/Login.vue" //登陆页
+import MainIndex from "@/components/MainIndex.vue" //主要页面，首页
+import Banner from "@/components/Pages/Banner/Banner.vue" //轮播首页
+import TodoListIndex from "@/components/Pages/TodoList/TodoListIndex.vue" //TodoList 页
 
 // vue 使用 vueRouter
 Vue.use(VueRouter);

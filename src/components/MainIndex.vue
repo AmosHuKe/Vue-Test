@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Banner from "./Pages/Banner/Banner.vue"
+import Banner from "@/components/Pages/Banner/Banner.vue"
 
 export default {
     name: 'MainIndex',

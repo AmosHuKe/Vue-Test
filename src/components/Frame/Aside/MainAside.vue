@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AsideMenu from './AsideMenu.vue'; //引进菜单模板
+import AsideMenu from '@/components/Frame/Aside/AsideMenu.vue'; //引进菜单模板
 
 export default {
     name: 'MainAside',

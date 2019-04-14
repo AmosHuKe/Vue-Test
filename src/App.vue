@@ -23,8 +23,8 @@
 
 <script>
 //import MainIndex from './components/MainIndex.vue' //主要
-import MainHeader from './components/Frame/Header/MainHeader.vue' //顶部
-import MainAside from './components/Frame/Aside/MainAside.vue' //侧边栏
+import MainHeader from '@/components/Frame/Header/MainHeader.vue' //顶部
+import MainAside from '@/components/Frame/Aside/MainAside.vue' //侧边栏
 
 export default {
   name: 'App',
