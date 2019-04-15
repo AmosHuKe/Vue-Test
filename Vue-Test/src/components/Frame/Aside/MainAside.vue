@@ -22,7 +22,7 @@ export default {
                 {
                     menuId:"0",
                     menuName: "首页", //父名
-                    menuUrl: "/vue/Banner", //父URL
+                    menuUrl: "/main/banner", //父URL
                     menuIcon: "el-icon-location-outline", //Icon
                     
                 },
@@ -35,7 +35,7 @@ export default {
                         {
                             menuId:"1.1",
                             menuName: "TodoList", //子名
-                            menuUrl: "/vue/todolist", //子URL
+                            menuUrl: "/main/todolist", //子URL
                             menuIcon: "el-icon-time", //Icon
                         }
                     ]

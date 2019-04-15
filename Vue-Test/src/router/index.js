@@ -24,24 +24,21 @@ export default new VueRouter({
             redirect: "/login" //重定向
         },
         {
-            path: "/login",
+            path: "/login", //登陆页
             name: "login",
             component: Lgoin
         },
         {
-            path: "/vue/todolist",
-            name: "todolist",
-            component: TodoListIndex
-        },
-        {
-            path: "/vue/Banner",
-            name: "Banner",
-            component: Banner
-        },
-        {
-            path:"/vue/mainindex",
-            name: "mainindex",
-            component: MainIndex
-        },
+            path: "/main", //后台页
+            name: "main",
+            component: MainIndex,
+            children: [
+                {path:'/',redirect:'/main/banner'}, //默认轮播图页
+                {path: "todolist",name: "todolist",component: TodoListIndex}, //TodoList
+                {path: "banner",name: "banner",component: Banner}, //轮播图页
+            ]
+                
+        }
+        
     ]
 })

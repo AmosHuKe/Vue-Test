@@ -16,46 +16,45 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
  
  
 // //http request 拦截器
-// axios.interceptors.request.use(
-//   config => {
-//     const token = VueCookies.get("access_token"); //
-//     config.data = JSON.stringify(config.data);
-//     config.headers = {
-//       'Content-Type':'application/x-www-form-urlencoded'
-//       // 'Content-Type':'application/json;charset=UTF-8'
-//     }
-//     if(token){
-//       config.params = {'access_token':token}
-//     }
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(err);
-//   }
-// );
+axios.interceptors.request.use(
+  config => {
+    const token = VueCookies.get("access_token"); //
+    config.data = JSON.stringify(config.data);
+    config.headers = {
+      'Content-Type':'application/x-www-form-urlencoded'
+      // 'Content-Type':'application/json;charset=UTF-8'
+    }
+    if(token){
+      config.params = {'access_token':token}
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(err);
+  }
+);
  
  
 // //http response 拦截器
- 
-// axios.interceptors.response.use(
-//   response => {
-//     if(response.data.errCode ==2){
-//       router.push({
-//         path:"/login",
-//         querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
-//       })
-//     }
-//     return response;
-//   },
-//   error => {
-//     ElementUI.Message({
-//       Message:error.message,
-//       type:'error',
-//       duration:5*1000
-//     });
-//     return Promise.reject(error)
-//   }
-// )
+axios.interceptors.response.use(
+  response => {
+    if(response.data.errCode ==2){
+      router.push({
+        path:"/login",
+        querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
+      })
+    }
+    return response;
+  },
+  error => {
+    ElementUI.Message({
+      Message:"无权访问，重新登陆",
+      type:'error',
+      duration:5*1000
+    });
+    return Promise.reject(error)
+  }
+)
  
 /**
  * 获取登陆后的基本信息方法

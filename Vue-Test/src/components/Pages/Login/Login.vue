@@ -157,6 +157,8 @@ export default {
                 if(_this.loginShow){
                     //普通账号登录
                     //console.log("普通账号登录")
+                    this.$router.push({name: 'main'}) //跳转到后台 用作测试直接登陆
+
                     getToken(_this.mUserName, _this.mPassWord)
                     .then((response)=>{
                         //console.log(response)
@@ -165,6 +167,7 @@ export default {
                             ,"username" : _this.mUserName
                         }
                         this.$cookies.set("userInfo",cookiesData) //存入cookie
+                        this.$router.push({name: 'main'}) //跳转到后台
                         _this.$message({
                             message: '登录成功',
                             type: 'success'
