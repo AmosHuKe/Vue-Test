@@ -1,0 +1,33 @@
+1. /oauth/authorize：授权端点。
+2. /oauth/token：获取token。
+3. /oauth/confirm_access：用户确认授权提交端点。
+4. /oauth/error：授权服务错误信息端点。
+5. /oauth/check_token：用于资源服务访问的令牌解析端点。
+6. /oauth/token_key：提供公有密匙的端点，如果你使用JWT令牌的话。
+7. /oauth/logout: 退出
+
+
+密码模式获取token:
+请求方式：127.0.0.1:18081/oauth/token?username=qiaorulai&password=123456&grant_type=password&client_id=client_2&client_secret=secret
+1. username ： 系统的登录名
+2. password ： 系统的登录密码
+3. grant_type ： password  密码模式固定值
+4. client_id : client_2 对于我们注册客户端的 client_id  在AuthorizationServerConfiguration配置类中
+5. client_secret ： secret 对于我们注册客户端的 secret  在AuthorizationServerConfiguration配置类中
+密码模式刷新token:
+http://localhost:18081/oauth/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiKiJdLCJ1c2VyX25hbWUiOiJxaWFvcnVsYWkiLCJzY29wZSI6WyJyZWFkIiwid3JpdGUiXSwiYXRpIjoiYTVkNGQyZTEtZTVhOS00MDA0LWFhNjctMjJlNzk4NGFjZTIzIiwiZXhwIjoxNTI5MjI4MDUxLCJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sImp0aSI6IjVkNGVmMmNlLTc3MzEtNGVkYS1iZjFmLTkxZWVjYzk4YjQyOCIsImNsaWVudF9pZCI6ImNsaWVudF8yIn0.QH76vP6M3FtZt2ijNR3xWCfGGTG28adJdTrUJPztyk8&client_id=client_2&client_secret=secret
+
+1. grant_type ： refresh_token  固定值
+2. client_id : client_2 对于我们注册客户端的 client_id  在AuthorizationServerConfiguration配置类中
+3. client_secret ： secret 对于我们注册客户端的 secret  在AuthorizationServerConfiguration配置类中
+4. refresh_token： 对应签名获取token中的refresh_token值
+
+**注意：
+如果用post请求：client_id和client_secret在前端用base64加密，请求头header的key为Authorization，value为client_id+client_secret的base64加密的值。body参数值username、password、grant_type
+
+
+
+
+
+
+
