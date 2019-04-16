@@ -7,7 +7,7 @@
 Node.js + Vue2.0 + Element-Ui + Vue-Router + Axios + Vue-Cookies
 ```
 
-## 启动项目
+## 启动项目（nodejs 6.0+）
 ```
 # 克隆项目 
 git clone git@github.com:AmosHuKe/Vue-Test.git  
