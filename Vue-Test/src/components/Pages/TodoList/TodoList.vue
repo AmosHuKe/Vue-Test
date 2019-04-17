@@ -53,7 +53,7 @@
                             <el-button 
                                 type="danger" 
                                 size="mini" 
-                                @click="handleDelete(dataList.$index, dataList.row),dataList.showDel=flase"
+                                @click="handleDelete(dataList.$index, dataList.row)"
                                 >确定</el-button>
                         </div>
                         <el-button class="delSty" type="danger" size="mini" slot="reference">删除</el-button>
@@ -76,7 +76,6 @@ export default {
             dataList:[], //List todoText  todoTime
             oldList:{}, //需要撤回的List
             oldListIndex: '', //需要撤回的List坐标
-            
         }
     },
     methods: {
