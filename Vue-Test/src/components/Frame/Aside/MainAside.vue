@@ -18,29 +18,7 @@ export default {
     },
     data() {
         return {
-            urlList: [
-                {
-                    menuId:"0",
-                    menuName: "首页", //父名
-                    menuUrl: "/main/banner", //父URL
-                    menuIcon: "el-icon-location-outline", //Icon
-                    
-                },
-                {
-                    menuId:"1",
-                    menuName: "练习", //父名
-                    menuUrl: "", //父URL
-                    menuIcon: "el-icon-time", //Icon
-                    children: [
-                        {
-                            menuId:"1.1",
-                            menuName: "TodoList", //子名
-                            menuUrl: "/main/todolist", //子URL
-                            menuIcon: "el-icon-time", //Icon
-                        }
-                    ]
-                },
-            ], //菜单配置
+            urlList: this.$store.getters.getUrlList, //菜单配置
             isCollapse: false
         }
     },
