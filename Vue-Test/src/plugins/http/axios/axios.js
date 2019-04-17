@@ -2,11 +2,14 @@
 import axios from 'axios';
 // 引入 Qs是为了把json格式，转为formdata 的数据格式
 import Qs from 'qs'
+import store from '@/store/index.js' //状态管理
+import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
 import ElementUI from 'element-ui'; //Element-UI
 
+
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址
+axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';//添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
@@ -15,29 +18,34 @@ axios.defaults.transformRequest = [function (data) {
 axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJqWEU1cmwxd3NSbFVwRE9tRnJQM1k2OFEvUC9kSUk4L3hxeEJlMlBkM3FFSFdX'; //授权服务器
  
  
-// //http request 拦截器
+// //http request 请求拦截器
 axios.interceptors.request.use(
   config => {
-    const token = VueCookies.get("access_token"); //
+    const token = store.getters.getToken; //取值cookies
+    console.log(token);
     config.data = JSON.stringify(config.data);
     config.headers = {
       'Content-Type':'application/x-www-form-urlencoded'
       // 'Content-Type':'application/json;charset=UTF-8'
     }
-    if(token){
+    if(token != null && token != ""){
       config.params = {'access_token':token}
+    }else{
+      router.push({name: 'login'}) //跳转到登陆
     }
     return config;
   },
   error => {
-    return Promise.reject(err);
+    router.push({name: 'login'}) //跳转到登陆
+    return Promise.reject(error);
   }
 );
  
  
-// //http response 拦截器
+// //http response 响应拦截器
 axios.interceptors.response.use(
   response => {
+    console.log(response);
     if(response.data.errCode ==2){
       router.push({
         path:"/login",

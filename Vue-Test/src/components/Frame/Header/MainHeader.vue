@@ -9,7 +9,7 @@
                     <el-menu-item index="2-1-1">TodoList</el-menu-item>
                 </el-submenu>
             </el-submenu>
-            <el-menu-item index="3" disabled>消息中心</el-menu-item>
+            <el-menu-item index="3" @click="loginOut()">退出</el-menu-item>
         </el-menu>
     </div>
 </template>
@@ -25,6 +25,14 @@ export default {
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      loginOut(){
+        //退出
+        //删除cookie
+        this.$cookies.remove("userInfo");
+        this.$store.dispatch("setToken","");
+        this.$router.push({path:"/login"}) //跳转登陆页
+
       }
     }
 }

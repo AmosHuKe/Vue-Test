@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import VueCookies from 'vue-cookies'
+import VueCookies from 'vue-cookies';
 
 // 引入组件
 import Lgoin from "@/components/Pages/Login/Login.vue" //登陆页
@@ -16,16 +16,23 @@ Vue.use(VueCookies);
 // 在App.vue 使用 <router-view></router-view>
 // 跳转如 <router-link to="/home">Home</router-link>
 
+
 export default new VueRouter({
     //mode: 'history', //history模式
     routes: [   //路由信息
         {
             path: "/",
+            meta: {
+                requireAuth: true // 添加该字段，表示进入这个路由是不需要验证是否有权限
+            },
             redirect: "/login" //重定向
         },
         {
             path: "/login", //登陆页
             name: "login",
+            meta: {
+                requireAuth: true // 添加该字段，表示进入这个路由是不需要验证是否有权限
+            },
             component: Lgoin
         },
         {
