@@ -4,7 +4,7 @@
 
 ```
 非常基础的 Vue2.0 练习
-Node.js + Vue2.0 + Element-Ui + Vue-Router + Axios + Vue-Cookies
+Node.js + Vue2.0 + Element-Ui + Vue-Router + Vuex + Axios + Vue-Cookies
 ```
 
 ## 启动项目（nodejs 6.0+）
@@ -44,13 +44,19 @@ npm run build
 │   |   |   ├──MainFooter.vue
 │   └── Pages  // 页面组件文件夹  
 │   │   ├── home（例）  // 模块划分文件夹  
+│   |   |   ├── css // 样式  
+│   |   |   ├── module // 状态控制module  
 │   │   ├── user（例）  // 模块划分文件夹  
+│   |   |   ├── css // 样式  
+│   |   |   ├── module // 状态控制module  
 │   └── MainIndex.vue  // 项目主入口文件  
 ├── plugins  // 项目相关配置及插件文件夹 
 │   └── http  // 网络请求相关配置
 │   └── api  // 接口api
 ├── router  // 路由配置文件夹  
 │   └── index.js  // 路由配置文件  
+├── store  // 状态控制文件夹  
+│   └── index.js  // 状态控制文件  
 ├── style  // scss 样式存放目录
 ├── lib  // 第三方插件/组件
 ```
