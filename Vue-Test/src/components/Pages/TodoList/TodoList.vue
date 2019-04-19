@@ -37,6 +37,7 @@
                 </template>
             </el-table-column>
             <el-table-column 
+                fixed="right"
                 label="操作"
                 width="160px">
                 <template slot-scope="dataList">
@@ -100,6 +101,26 @@ export default {
         handleEdit(index,row) {
             //编辑
             console.log(index,row)
+            this.$prompt('内容', '修改 [ '+row.todoTime+' ]', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                inputPattern: /[\S]/,
+                inputValue: row.todoText,
+                inputErrorMessage: '内容格式不符'
+            }).then(({ value }) => {
+                //确认操作
+                this.$set(this.dataList[index], 'todoText', value)
+                this.$message({
+                    type: 'success',
+                    message: '修改成功'
+                })
+            }).catch(() => {
+                //取消操作
+                // this.$message({
+                //     type: 'info',
+                //     message: '取消输入'
+                // });       
+            })
         },
         handleDelete(index,row) {
             //删除
