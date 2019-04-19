@@ -18,7 +18,7 @@ Vue.use(VueCookies);
 
 
 export default new VueRouter({
-    //mode: 'history', //history模式
+    mode: 'history', //history模式
     routes: [   //路由信息
         {
             path: "/",
