@@ -1,15 +1,15 @@
 <template>
     <div id="MainIndex">
         <el-container>
-            <!-- 顶部 -->
-            <el-header>
-                <MainHeader></MainHeader>
-            </el-header>
+            <!-- 侧边栏 -->
+            <el-aside class="main-aside">
+                <MainAside></MainAside>
+            </el-aside>
             <el-container>
-                <!-- 侧边栏 -->
-                <el-aside class="main-aside">
-                    <MainAside></MainAside>
-                </el-aside>
+                <!-- 顶部 -->
+                <el-header>
+                    <MainHeader></MainHeader>
+                </el-header>
                 <el-container>
                     <!-- 主要 -->
                     <el-main>
@@ -43,7 +43,7 @@ export default {
     }
     .main-aside{
         width: 200px !important;
-        padding-top: 40px;
+        padding-top: 20px !important;
     }
     a {
         text-decoration:none !important;
