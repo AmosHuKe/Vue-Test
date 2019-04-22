@@ -32,12 +32,16 @@ export default new VueRouter({
             name: "login",
             meta: {
                 requireAuth: true // 添加该字段，表示进入这个路由是不需要验证是否有权限
+                ,index: 0 // 判断动画 值小为父 
             },
             component: Lgoin
         },
         {
             path: "/main", //后台页
             name: "main",
+            meta: {
+                index: 1 // 判断动画 值小为父 
+            },
             component: MainIndex,
             children: [
                 {path:'/',redirect:'/main/banner'}, //默认轮播图页

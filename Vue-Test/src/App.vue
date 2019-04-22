@@ -1,13 +1,30 @@
 <template>
   <div id="App">
-    <router-view></router-view> <!-- 路由 -->   
+    <transition :name="transitionName">
+      <router-view></router-view> <!-- 路由 -->   
+    </transition>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+      transitionName: "" //动画
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      //判断动画
+      //console.log(to)
+      //let toName = to.name
+      const toIndex = to.meta.index
+      const fromIndex = from.meta.index
+      this.transitionName = toIndex < fromIndex ? 'el-fade-in-linear' : 'el-fade-in'
+    }
+  }
 }
 </script>
 
