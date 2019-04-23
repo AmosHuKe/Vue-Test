@@ -18,10 +18,10 @@ const mutations = {
         //赋值
         state.dataList.push(dataList);
     },
-    set_Updatedata(state,dataListArray){
-        //修改内容
-        state.dataListArray[dataListIndex].splice('todoText',dataListArray[dataListValue])
-    }
+    // set_Updatedata(state,dataListArray){
+    //     //修改内容
+    //     state.dataListArray[dataListIndex].splice('todoText',dataListArray[dataListValue])
+    // }
 
 } 
 
@@ -31,11 +31,11 @@ const actions = {
         //赋值
         commit("set_DataList", dataList);
     },
-    setUpdatedata ({commit},dataListArray) {
-        //修改内容
-        console.log(dataListArray)
-        commit("set_Updatedata", dataListArray);
-    }
+    // setUpdatedata ({commit},dataListArray) {
+    //     //修改内容
+    //     console.log(dataListArray)
+    //     commit("set_Updatedata", dataListArray);
+    // }
 }
 const getters = {
     getDataList(state){
