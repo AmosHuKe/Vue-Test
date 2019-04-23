@@ -45,7 +45,7 @@
                                     </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
-                                        <a href="javascript:;" class="auth-link text-black text-primary" @click="showLogin()">短信登陆</a>
+                                        <!-- <a href="javascript:;" class="auth-link text-black text-primary" @click="showLogin()">短信登陆</a> -->
                                     </div>
                                     </div>
                                 </form>
@@ -164,7 +164,7 @@ export default {
                         ,"username" : _this.mUserName
                     }
                     this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                    this.$store.commit("set_Token", cookiesData.access_token); //赋值store
+                    this.$store.dispatch("setToken", cookiesData.access_token); //赋值store
                     _this.$message({
                         message: '登录成功',
                         type: 'success'
