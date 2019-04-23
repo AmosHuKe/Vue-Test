@@ -74,7 +74,7 @@ export default {
     data () {
         return {
             inputText: '', //文本框内容
-            dataList:[], //List todoText  todoTime
+            dataList: this.$store.getters.getDataList, //todolist数据
             oldList:{}, //需要撤回的List
             oldListIndex: '', //需要撤回的List坐标
         }
@@ -90,7 +90,7 @@ export default {
             _this.oldList = "" //清空
             _this.oldListIndex = ""
             //加入数据
-            _this.dataList.push({
+            _this.$store.dispatch('setDataList',{
                 todoText: _this.inputText,
                 todoTime: dateTime,
                 showDel: false, //确定删除是否显示
@@ -100,6 +100,7 @@ export default {
         },
         handleEdit(index,row) {
             //编辑
+            const _this = this
             console.log(index,row)
             this.$prompt('内容', '修改 [ '+row.todoTime+' ]', {
                 confirmButtonText: '确定',
@@ -109,6 +110,11 @@ export default {
                 inputErrorMessage: '内容格式不符'
             }).then(({ value }) => {
                 //确认操作
+                // let dataListArray={
+                //     dataListIndex: _this.dataList[index],
+                //     dataListValue: value
+                // }
+                //_this.$store.dispatch('setUpdatedata', dataListArray)
                 this.$set(this.dataList[index], 'todoText', value)
                 this.$message({
                     type: 'success',
