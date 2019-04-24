@@ -64,7 +64,7 @@ module.exports = {
         hotOnly: false,
         proxy: {
             "/oauth2service": {
-                target: "http://localhost:8080",
+                target: "http://192.168.1.6:8080",
                 changeOrigin: true, //是否跨域
                 secure: false
             }

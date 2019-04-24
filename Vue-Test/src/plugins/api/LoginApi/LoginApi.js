@@ -21,15 +21,25 @@ export function getToken(username,password){
 }
 
 /**
- * 获取登陆后的用户信息
+ * 获取登陆后的用户信息  登陆后得到access_token和refresh_token再次授权服务器
  * @returns {Promise}
  */
-export function getUser(){
-    let access_token = getUserinfo().access_token
+export function getUser(access_token){
     let datas = {
-        access_token: access_token
+        access_token: access_token,
     }
     let e = post("/users/CurrentUser",datas);
+    return e;
+}
+
+/**
+ * 退出登陆
+ */
+export function loginOut(access_token){
+    let datas = {
+        access_token: access_token,
+    }
+    let e = post("/oauth/logout",datas);
     return e;
 }
 

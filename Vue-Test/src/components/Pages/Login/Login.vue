@@ -105,7 +105,7 @@
 <script>
 import {
     getToken,
-    getUser
+    getUser,
 } from '@/plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
 
 export default {
@@ -159,46 +159,69 @@ export default {
                     //console.log("普通账号登录")
 
                     // 模拟登陆
-                    let cookiesData= {
-                        "access_token" : "233666"
-                        ,"username" : _this.mUserName
-                    }
-                    this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                    this.$store.dispatch("setToken", cookiesData.access_token); //赋值store
-                    _this.$message({
-                        message: '登录成功',
-                        type: 'success'
-                    })
-                    setTimeout(() =>{
-                        _this.loadingLogin(e, false) //关闭锁
-                        _this.$router.push({path: '/main/banner'}) //跳转到后台 用作测试直接登陆
-                    }, 2000)
+                    // let cookiesData= {
+                    //     "access_token" : "233666"
+                    //     ,"username" : _this.mUserName
+                    // }
+                    // this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
+                    // this.$store.dispatch("setToken", cookiesData.access_token); //赋值store
+                    // _this.$message({
+                    //     message: '登录成功',
+                    //     type: 'success'
+                    // })
+                    // setTimeout(() =>{
+                    //     _this.loadingLogin(e, false) //关闭锁
+                    //     _this.$router.push({path: '/main/banner'}) //跳转到后台 用作测试直接登陆
+                    // }, 2000)
 
                     // 实际情况
-                    // getToken(_this.mUserName, _this.mPassWord) //登陆接口
-                    // .then((response)=>{
-                    //     //成功操作
-                    //     //console.log(response)
-                    //     let cookiesData= {
-                    //         "access_token" : response.access_token
-                    //         ,"username" : _this.mUserName
-                    //     }
-                    //     this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                    //     this.$store.dispatch("setToken", cookiesData.access_token); //赋值store
-                    //     _this.$message({
-                    //         message: '登录成功',
-                    //         type: 'success'
-                    //     })
-                    //     console.log((getUser())) //弹出获取的用户
-                    //     _this.loadingLogin(e, false) //关闭锁
-                    //     this.$router.push({path: '/main/banner'}) //跳转到后台
-                    // })
-                    // .catch(err => {
-                    //     //失败操作
-                    //     // reject(err)
-                    //     this.$message.error('登录失败 '+err)    
-                    //     _this.loadingLogin(e, false) //关闭锁 
-                    // })
+                    getToken(_this.mUserName, _this.mPassWord) //登陆接口
+                    .then((response)=>{
+                        //成功操作
+                        //console.log(response)
+                        let cookiesData= {
+                            "refresh_token" : response.refresh_token
+                            ,"access_token" : response.access_token
+                            ,"username" : _this.mUserName
+                        }
+                        getUser(cookiesData.access_token) //获取用户信息并再次授权服务器
+                        .then((response)=>{
+                            //获取用户信息成功操作
+                            if(response.code == 200){
+                                _this.$store.dispatch("setUserData",response.data)    
+                                _this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
+                                
+                                _this.$message({
+                                    message: '登录成功',
+                                    type: 'success'
+                                })
+                                //console.log(getUser().id) //弹出获取的用户
+                                //_this.loadingLogin(e, false) //关闭锁
+                                setTimeout(() =>{
+                                    _this.$router.push({path: '/main/banner'}) //跳转到后台
+                                },1000)
+                            }else{
+                                _this.$router.push({name: 'login'}) //跳转到登陆 
+                                _this.loadingLogin(e, false) //关闭锁 
+                            }
+                            
+        
+                        })
+                        .catch(err => {
+                            //获取用户信息失败操作
+                            // reject(err)
+                            this.$message.error('登录失败 '+err)
+                            _this.$router.push({name: 'login'}) //跳转到登陆 
+                            _this.loadingLogin(e, false) //关闭锁 
+                        })
+    
+                    })
+                    .catch(err => {
+                        //失败操作
+                        // reject(err)
+                        this.$message.error('登录失败 '+err)    
+                        _this.loadingLogin(e, false) //关闭锁 
+                    })
                     
                 }else {
                     //短信登录

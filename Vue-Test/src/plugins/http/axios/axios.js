@@ -5,8 +5,7 @@ import Qs from 'qs'
 import store from '@/store/index.js' //状态管理
 import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
-import ElementUI from 'element-ui'; //Element-UI
-
+import ElementUI from 'element-ui' //Element-UI
 
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
@@ -21,21 +20,28 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 // //http request 请求拦截器
 axios.interceptors.request.use(
   config => {
-    const token = store.getters.getToken; //取值cookies
-    console.log(token);
-    config.data = JSON.stringify(config.data);
-    config.headers = {
-      'Content-Type':'application/x-www-form-urlencoded'
-      // 'Content-Type':'application/json;charset=UTF-8'
+    let refresh_token = "" //取值refresh_token
+    if(VueCookies.get("userInfo") != null && VueCookies.get("userInfo").refresh_token != ""){
+      refresh_token = VueCookies.get("userInfo").refresh_token; //获取Cookie 值
     }
-    if(token != null && token != ""){
-      config.params = {'access_token':token}
+    //console.log(refresh_token);
+    //config.data = JSON.stringify(config.data);
+    // config.headers = {
+    //   'Content-Type':'application/x-www-form-urlencoded'
+    //   // 'Content-Type':'application/json;charset=UTF-8'
+    // }
+    if(refresh_token != null && refresh_token != ""){
+      //如果有token,将默认传入每次请求的数据中
+      console.log(config)
+      config.params = {'refresh_token': refresh_token}
     }else{
+      //没有token 跳转到首页
       router.push({name: 'login'}) //跳转到登陆
     }
     return config;
   },
   error => {
+    //错误跳转到首页
     router.push({name: 'login'}) //跳转到登陆
     return Promise.reject(error);
   }
@@ -45,28 +51,30 @@ axios.interceptors.request.use(
 // //http response 响应拦截器
 axios.interceptors.response.use(
   response => {
-    console.log(response);
-    if(response.data.errCode ==2){
-      router.push({
-        path:"/login",
-        querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
-      })
-    }
+    //console.log(response)
+    // if(response.status != 200){
+    //   router.push({
+    //     path:"/",
+    //     querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
+    //   })
+    // }
     return response;
   },
   error => {
-    ElementUI.Message({
-      Message:"无权访问，重新登陆",
-      type:'error',
-      duration:5*1000
-    });
+    //删除cookie
+    VueCookies.remove("userInfo") //防止服务器token过期时的无限请求失败
+    router.push({
+      path:"/",
+      querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
+    })
+    ElementUI.Message.error('无权访问，请重新登陆')
     return Promise.reject(error)
   }
 )
  
 /**
  * 获取登陆后的基本信息方法
- * @returns access_token：token, username：用户名
+ * @returns 
  */
 export function getUserinfo(){
   let Userinfo = VueCookies.get("userInfo");
