@@ -9,6 +9,7 @@ import { getUserinfo,post } from '@/plugins/http/axios/axios.js' //引入axios�
  */
 export function getToken(username,password){
     let datas = {
+        ServiceBaseUrl: "S1", //使用服务器
         username: username,
         password:  password,
         grant_type: 'password',
@@ -26,6 +27,7 @@ export function getToken(username,password){
  */
 export function getUser(access_token){
     let datas = {
+        ServiceBaseUrl: "S1", //使用服务器
         access_token: access_token,
     }
     let e = post("/users/CurrentUser",datas);
@@ -37,9 +39,10 @@ export function getUser(access_token){
  */
 export function loginOut(access_token){
     let datas = {
+        ServiceBaseUrl: "S2", //使用服务器
         access_token: access_token,
     }
-    let e = fetch("/oauth/logout",datas);
+    let e = post("/success.htm",datas);
     return e;
 }
 

@@ -34,6 +34,17 @@ axios.interceptors.request.use(
     if(access_token != null && access_token != ""){
       //如果有token,将默认传入每次请求的数据中
       console.log(config)
+      /**
+       * 多服务器解决方案（不是特别好）
+       * 判断参数中 ServiceBaseUrl 的值进行服务器地址赋值
+       */
+      const ServiceBaseUrl = config.data.ServiceBaseUrl; //判断服务器地址
+      if(ServiceBaseUrl == "S1"){
+        config.baseURL= 'http://192.168.1.5:8080/oauth2service/'
+      }else if(ServiceBaseUrl == "S2"){
+        config.baseURL= 'http://192.168.1.5:8081/'
+      }
+      
       config.headers.access_token = access_token
     }else{
       //没有token 跳转到首页
@@ -91,9 +102,11 @@ export function getUserinfo(){
  
 export function fetch(url,params={}){
   return new Promise((resolve,reject) => {
-    axios.get(url,{  
-      params: params 
-    })
+    axios.get(url,
+      {
+        params: params
+      }
+    )
     .then(response => {
       resolve(response.data);
     })
