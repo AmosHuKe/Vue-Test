@@ -37,6 +37,7 @@ export default {
         .then((response)=>{
             //退出成功操作
             //删除cookie
+            //console.log(response);
             this.$cookies.remove("userInfo")
             this.$router.push({path:"/login"}) //跳转登陆页
             this.$message({

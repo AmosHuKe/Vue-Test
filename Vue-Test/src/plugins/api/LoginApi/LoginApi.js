@@ -39,7 +39,7 @@ export function loginOut(access_token){
     let datas = {
         access_token: access_token,
     }
-    let e = post("/oauth/logout",datas);
+    let e = fetch("/oauth/logout",datas);
     return e;
 }
 

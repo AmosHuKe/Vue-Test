@@ -133,8 +133,16 @@ export default {
             ,submitLsms : true //sms登录操作锁
         }
     },
+    mounted() {
+        this.isCookie()
+    },
     methods: {
-        submitLogin(e) {
+        isCookie(){
+            if(this.$cookies.get("userInfo") != null && this.$cookies.get("userInfo").access_token != ""){
+                this.$router.push({path:"/main/banner"}) //如果存在cookie将跳转到后台首页
+            }
+        }
+        ,submitLogin(e) {
             //登录
             var _this = this
             if(_this.mUserName == ""){

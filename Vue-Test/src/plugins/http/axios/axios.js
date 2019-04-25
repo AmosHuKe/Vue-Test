@@ -8,10 +8,11 @@ import VueCookies from 'vue-cookies'
 import ElementUI from 'element-ui' //Element-UI
 
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
+axios.defaults.baseURL ='http://192.168.1.5:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';//添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
+  // console.log(data)
   return Qs.stringify(data);
 }]
 axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJqWEU1cmwxd3NSbFVwRE9tRnJQM1k2OFEvUC9kSUk4L3hxeEJlMlBkM3FFSFdX'; //授权服务器
@@ -20,9 +21,9 @@ axios.defaults.headers['Authorization'] = 'Basic Y2xpZW50XzI6JDJhJDEwJHRtUDc4bUJ
 // //http request 请求拦截器
 axios.interceptors.request.use(
   config => {
-    let refresh_token = "" //取值refresh_token
-    if(VueCookies.get("userInfo") != null && VueCookies.get("userInfo").refresh_token != ""){
-      refresh_token = VueCookies.get("userInfo").refresh_token; //获取Cookie 值
+    let access_token = "" //取值refresh_token
+    if(VueCookies.get("userInfo") != null && VueCookies.get("userInfo").access_token != ""){
+      access_token = VueCookies.get("userInfo").access_token; //获取Cookie 值
     }
     //console.log(refresh_token);
     //config.data = JSON.stringify(config.data);
@@ -30,10 +31,10 @@ axios.interceptors.request.use(
     //   'Content-Type':'application/x-www-form-urlencoded'
     //   // 'Content-Type':'application/json;charset=UTF-8'
     // }
-    if(refresh_token != null && refresh_token != ""){
+    if(access_token != null && access_token != ""){
       //如果有token,将默认传入每次请求的数据中
       console.log(config)
-      config.params = {'refresh_token': refresh_token}
+      config.headers.access_token = access_token
     }else{
       //没有token 跳转到首页
       router.push({name: 'login'}) //跳转到登陆
