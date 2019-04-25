@@ -106,6 +106,7 @@
 import {
     getToken,
     getUser,
+    getSussce,
 } from '@/plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
 
 export default {
@@ -198,7 +199,7 @@ export default {
                             if(response.code == 200){
                                 _this.$store.dispatch("setUserData",response.data)    
                                 _this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                                
+                                getSussce(this.$cookies.get("userInfo").access_token)
                                 _this.$message({
                                     message: '登录成功',
                                     type: 'success'

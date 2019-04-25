@@ -39,10 +39,22 @@ export function getUser(access_token){
  */
 export function loginOut(access_token){
     let datas = {
+        ServiceBaseUrl: "S1", //使用服务器
+        access_token: access_token,
+    }
+    let e = fetch("/oauth/logout",datas);
+    return e;
+}
+
+/**
+ * 测试 返回字符串
+ */
+export function getSussce(access_token){
+    let datas = {
         ServiceBaseUrl: "S2", //使用服务器
         access_token: access_token,
     }
-    let e = post("/success.htm",datas);
+    let e = post("/success",datas);
     return e;
 }
 
