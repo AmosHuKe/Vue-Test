@@ -145,19 +145,15 @@ export default {
         }
         ,submitLogin(e) {
             //登录
+            
             var _this = this
+            _this.$message.destroy() //销毁全局提示
             if(_this.mUserName == ""){
-                _this.$message({
-                    message: '填写账号',
-                    type: 'warning'
-                })
+               _this.$message.warning('填写账号')
                 return false
             }
             if(_this.mPassWord == ""){
-                _this.$message({
-                    message: '填写密码',
-                    type: 'warning'
-                })
+                _this.$message.warning('填写密码')
                 return false
             }
             if(_this.submitL){
@@ -174,10 +170,7 @@ export default {
                     // }
                     // this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
                     // this.$store.dispatch("setToken", cookiesData.access_token); //赋值store
-                    // _this.$message({
-                    //     message: '登录成功',
-                    //     type: 'success'
-                    // })
+                    // _this.$message.success('登录成功')
                     // setTimeout(() =>{
                     //     _this.loadingLogin(e, false) //关闭锁
                     //     _this.$router.push({path: '/main/banner'}) //跳转到后台 用作测试直接登陆
@@ -199,11 +192,8 @@ export default {
                             if(response.code == 200){
                                 _this.$store.dispatch("setUserData",response.data)    
                                 _this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                                getSussce(this.$cookies.get("userInfo").access_token)
-                                _this.$message({
-                                    message: '登录成功',
-                                    type: 'success'
-                                })
+                                //getSussce(this.$cookies.get("userInfo").access_token)
+                                _this.$message.success('登录成功')
                                 //console.log(getUser().id) //弹出获取的用户
                                 //_this.loadingLogin(e, false) //关闭锁
                                 setTimeout(() =>{
@@ -219,7 +209,7 @@ export default {
                         .catch(err => {
                             //获取用户信息失败操作
                             // reject(err)
-                            this.$message.error('登录失败 '+err)
+                            _this.$message.error('登录失败 '+err)
                             _this.$router.push({name: 'login'}) //跳转到登陆 
                             _this.loadingLogin(e, false) //关闭锁 
                         })
@@ -228,7 +218,7 @@ export default {
                     .catch(err => {
                         //失败操作
                         // reject(err)
-                        this.$message.error('登录失败 '+err)    
+                        _this.$message.error('登录失败 '+err)    
                         _this.loadingLogin(e, false) //关闭锁 
                     })
                     
@@ -240,15 +230,12 @@ export default {
                         //console.log(response)
                         //将Token 存入cookies
                         this.$cookies.set("access_token",response.access_token)
-                        _this.$message({
-                            message: '登录成功',
-                            type: 'success'
-                        })
+                        _this.$message.success('登录成功')
                         _this.loadingLogin(e, false) //关闭锁
                     })
                     .catch(err => {
                         // reject(err)
-                        this.$message.error('登录失败 '+err)
+                        _this.$message.error('登录失败 '+err)
                         _this.loadingLogin(e, false) //关闭锁
                     })
                 }
@@ -268,7 +255,7 @@ export default {
             if(_this.loginShow){
                 if(c && _this.submitL){
                     _this.submitL = false; //loading锁
-                    let loadingT = '<i class="el-icon-loading"></i>';
+                    let loadingT = '<i class="anticon anticon-loading"><svg viewBox="0 0 1024 1024" data-icon="loading" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg></i>';
                     e.srcElement.innerHTML = loadingT;
                 }else if(!c){
                     _this.submitL = true; //loading锁
@@ -278,7 +265,7 @@ export default {
                 //短信登陆
                 if(c && _this.submitLsms){
                     _this.submitLsms = false //loading锁
-                    let loadingT = '<i class="el-icon-loading"></i>'
+                    let loadingT = '<i class="anticon anticon-loading"><svg viewBox="0 0 1024 1024" data-icon="loading" width="1em" height="1em" fill="currentColor" aria-hidden="true" class="anticon-spin"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path></svg></i>'
                     e.srcElement.innerHTML = loadingT
                 }else if(!c){
                     _this.submitLsms = true //loading锁

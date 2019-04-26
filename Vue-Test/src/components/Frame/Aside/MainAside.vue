@@ -1,11 +1,15 @@
 <template>
     <div id="MainAside">
         <!-- 侧边栏 -->
-        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-            <h3>{{ mainTitle }}</h3>
+        <a-layout-sider
+            breakpoint="lg"
+            collapsedWidth="0"
+            @collapse="onCollapse"
+            @breakpoint="onBreakpoint"
+        >
+            <div class="logo" />
             <AsideMenu :menuList="this.urlList"></AsideMenu>
-            
-        </el-menu>
+        </a-layout-sider>
     </div>
 </template>
 
@@ -25,11 +29,11 @@ export default {
         }
     },
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+        onCollapse(collapsed, type) {
+            console.log(collapsed, type);
         },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
+        onBreakpoint(broken) {
+            console.log(broken);
         }
     }
 }

@@ -4,7 +4,7 @@
 
 ```
 非常基础的 Vue2.0 练习
-Node.js + Vue2.0 + Element-Ui + Vue-Router + Vuex + Axios + Vue-Cookies + NProgress
+Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + NProgress
 ```
 
 ## 启动项目（Nodejs 6.0+）
