@@ -3,10 +3,10 @@ import App from '@/App.vue'
 import axios from 'axios' //axios
 import VueCookies from 'vue-cookies'
 
-import ElementUI from 'element-ui'; //Element-UI
-import 'element-ui/lib/theme-chalk/index.css'; //Element-UI样式
+import '@/lib/PurpleAdmin/css/style.css' //PurpleAdmin样式
 
-import '@/lib/PurpleAdmin/css/style.css'; //PurpleAdmin样式
+import Antd from 'ant-design-vue/dist/antd.js' //ant-design
+import 'ant-design-vue/dist/antd.less' //ant-design样式
 
 import Common from '@/components/Common/Common.js' //公共文件
 import router from "@/router/index.js" //路由
@@ -16,7 +16,8 @@ axios.defaults.withCredentials = false
 Vue.config.productionTip = false
 
 Vue.use(VueCookies); //使用VueCookies
-Vue.use(ElementUI); //使用ElementUI
+Vue.use(Antd); //使用ant-design
+
 
 Vue.prototype.Common = Common; //配置全局使用公共文件
 
