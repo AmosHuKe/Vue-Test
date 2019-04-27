@@ -1,23 +1,22 @@
 <template>
     <div id="MainIndex">
-        <el-container>
+        <a-layout id="components-layout-demo-responsive">
             <!-- 侧边栏 -->
-            <el-aside class="main-aside">
-                <MainAside></MainAside>
-            </el-aside>
-            <el-container>
+            <MainAside ></MainAside>
+            <a-layout>
                 <!-- 顶部 -->
-                <el-header>
-                    <MainHeader></MainHeader>
-                </el-header>
-                <el-container>
-                    <!-- 主要 -->
-                    <el-main>
+                <MainHeader></MainHeader>
+                 <!-- 主要 -->
+                <a-layout-content :style="{ margin: '24px 16px 0' }">
+                    <div :style="{ padding: '24px', background: '#fff', minHeight: '800px' }">
                         <router-view></router-view> <!-- 路由 -->
-                    </el-main>
-                </el-container>
-            </el-container>
-        </el-container>
+                    </div>
+                </a-layout-content>
+                <a-layout-footer style="textAlign: center">
+                    ©2018 AmosHuKe
+                </a-layout-footer>
+            </a-layout>
+        </a-layout>
     </div>
 </template>
 
@@ -35,20 +34,11 @@ export default {
 </script>
 
 <style>
-    #App {
-        text-align: center;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
 
-    }
-    .main-aside{
-        width: 200px !important;
-        padding-top: 20px !important;
-    }
-    a {
-        text-decoration:none !important;
-    }
-    a:hover{
-        text-decoration:none !important;
-    }
+a {
+    text-decoration:none !important;
+}
+a:hover{
+    text-decoration:none !important;
+}
 </style>
