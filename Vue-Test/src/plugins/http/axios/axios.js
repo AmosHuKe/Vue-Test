@@ -5,7 +5,7 @@ import Qs from 'qs'
 //import store from '@/store/index.js' //状态管理
 import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
-import { Message } from 'ant-design-vue' //ant-design
+import { Message } from 'ant-design-vue/es/message' //ant-design
 
 axios.defaults.timeout = 5000; //超时终止请求
 axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
@@ -79,7 +79,7 @@ axios.interceptors.response.use(
       path:"/",
       querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
     })
-    Message.error('无权访问，请重新登陆')
+    Message.error3('无权访问，请重新登陆')
     return Promise.reject(error)
   }
 )
