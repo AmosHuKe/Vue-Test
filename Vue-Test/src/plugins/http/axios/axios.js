@@ -79,7 +79,7 @@ axios.interceptors.response.use(
       path:"/",
       querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
     })
-    Message.error3('无权访问，请重新登陆')
+    Message.error('无权访问，请重新登陆')
     return Promise.reject(error)
   }
 )

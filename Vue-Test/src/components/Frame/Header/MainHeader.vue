@@ -61,7 +61,7 @@ export default {
           content: '',
           maskClosable: true,
           okText: '确定',
-          okType: 'success',
+          okType: 'default',
           cancelText: '取消',
           onOk() {
             //确定退出
