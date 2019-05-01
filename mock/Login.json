@@ -1,0 +1,17 @@
+{
+    "Token":{
+        "code": "200"
+        ,"refresh_token": "123"
+        ,"access_token": "123"
+        ,"username": "AmosHuKe"
+    },
+    "CurrentUser":{
+        "code": "200"
+        ,"data": {
+            "userAccount": "AmosHuKe"
+        }
+    },
+    "LogOut":{
+        "code": "200"
+    }
+}
