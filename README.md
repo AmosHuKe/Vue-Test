@@ -4,7 +4,7 @@
 
 ```
 非常基础的 Vue2.0 练习
-Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + MockJs + Less
+Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + Mock.js + Less
 ```
 
 ## 启动项目（Nodejs 6.0+）
@@ -59,7 +59,7 @@ npm run build
 │   └── index.js  // 状态控制文件  
 ├── style  // scss 样式存放目录
 ├── lib  // 第三方插件/组件
-├── mock  // 模拟请求数据
+├── mock  // 模拟请求数据（json）
 ```
 
 © AmosHuKe. All Rights Reserved.
