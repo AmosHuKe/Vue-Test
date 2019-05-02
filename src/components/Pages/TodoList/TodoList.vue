@@ -1,78 +1,67 @@
 <template>
     <div id="TodoList">
-        <!-- 输入框 -->
-        <el-input type="text" v-model="inputText">
-            <el-badge slot="prefix" class="mark" :value="dataList.length" />
-            <el-tooltip class="item" slot="append" effect="dark" content="提交你的内容生成 TodoList" placement="top-end">
-                <el-button type="primary" @click="buttonSubmit()">
-                    提交
-                </el-button>
-            </el-tooltip>
-            <el-tooltip class="item" slot="append" effect="dark" content="撤回最近一次删除的内容" placement="top-end">
-                <el-button type="primary" @click="handleReturn()">
-                    撤回
-                </el-button>
-            </el-tooltip>
-        </el-input>
-        <!-- List框 -->
-        
-        <el-table
-            class="list-table"
-            :data="dataList">
-            <el-table-column
-                label="日期"
-                width="200px">
-                <template slot-scope="dataList">
-                    <el-tag size="medium">
-                        <i class="el-icon-time"></i>
-                        {{ dataList.row.todoTime }}
-                    </el-tag>
-                </template>
-            </el-table-column>
-            <el-table-column
-                label="内容"
-                width="auto">
-                <template slot-scope="dataList">
-                    {{ dataList.row.todoText }}
-                </template>
-            </el-table-column>
-            <el-table-column 
-                fixed="right"
-                label="操作"
-                width="160px">
-                <template slot-scope="dataList">
-                    <el-button
-                        size="mini"
-                        @click="handleEdit(dataList.$index, dataList.row)">编辑</el-button>
-                    <!-- 确定是否删除 -->
-                    <el-popover
-                        placement="top"
-                        width="auto"
-                        v-model="dataList.showDel">
-                        <p>确定删除吗？</p>
-                        <div style="text-align: right; margin: 0">
-                            <el-button 
-                                type="danger" 
-                                size="mini" 
-                                @click="handleDelete(dataList.$index, dataList.row)"
-                                >确定</el-button>
-                        </div>
-                        <el-button class="delSty" type="danger" size="mini" slot="reference">删除</el-button>
-                    </el-popover>
-                </template>
-            </el-table-column>
 
-        </el-table>
-        
-        
+        <!-- 输入框 -->
+        <a-badge :count="dataList.length">
+            <a-input size="large" placeholder="输入内容"   v-model="inputText" >
+                <a-tooltip slot="suffix" placement="topRight" title="提交内容生成TodoList">
+                    <a href="javascript:;"><a-icon type="plus-circle" @click="buttonSubmit()" /></a>
+                </a-tooltip>
+            </a-input>
+        </a-badge>
+
+        <!-- <a-tooltip placement="topLeft" title="撤回最近一次删除的内容">
+            <a-button size="large" @click="handleReturn()">撤回</a-button>
+        </a-tooltip> -->
+
+        <!-- Table框 -->
+        <a-table class="list-table" :columns="columns" :dataSource="dataList" size="small">
+            <span slot="todoTimeTitle"><a-icon type="clock-circle" /> 时间</span>
+            <span slot="todoTime" slot-scope="todoTime"><a-tag color="blue">{{todoTime}}</a-tag></span>
+            <span slot="action">
+                <!-- 编辑 -->
+                <!-- <a-tag color="blue" @click="handleEdit(record.key, record.col)"> 编辑</a-tag> -->
+                <!-- 确定是否删除 -->
+
+                <!-- 删除还有问题 有时间改-->
+                <a-popconfirm title="确定删除吗？" @confirm="handleDelete($event)" okText="确定" cancelText="取消">
+                     <a-tag color="red" ><a-icon type="delete" /></a-tag>
+                </a-popconfirm>
+                    
+            </span>
+        </a-table>
+
     </div>
 </template>
 
 <script>
+const columns = [
+    { 
+      width: 200, 
+      dataIndex: 'todoTime', 
+      fixed: 'left', 
+      slots: { title: 'todoTimeTitle' },
+      scopedSlots: { customRender: 'todoTime' },
+    },
+    { 
+        title: '内容', 
+        dataIndex: 'todoText', 
+        fixed: 'left',
+        scopedSlots: { customRender: 'todoText' },
+    },
+    {
+        title: '操作',
+        fixed: 'right',
+        width: 80,
+        scopedSlots: { customRender: 'action' },
+    },
+];
+
 export default {
     name: 'TodoList',
     data () {
         return {
+            columns: columns, //表标题
             inputText: '', //文本框内容
             dataList: this.$store.getters.getDataList, //todolist数据
             oldList:{}, //需要撤回的List
@@ -80,7 +69,7 @@ export default {
         }
     },
     methods: {
-        buttonSubmit () {
+        buttonSubmit (value) {
             //提交文本
             var _this = this
             let dateTime = _this.Common.getNowTime()//时间
@@ -98,42 +87,21 @@ export default {
 
             _this.inputText = "" //清空
         },
-        handleEdit(index,row) {
+        handleEdit(index,row,value) {
             //编辑
-            const _this = this
-            console.log(index,row)
-            this.$prompt('内容', '修改 [ '+row.todoTime+' ]', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                inputPattern: /[\S]/,
-                inputValue: row.todoText,
-                inputErrorMessage: '内容格式不符'
-            }).then(({ value }) => {
-                //确认操作
-                // let dataListArray={
-                //     dataListIndex: _this.dataList[index],
-                //     dataListValue: value
-                // }
-                //_this.$store.dispatch('setUpdatedata', dataListArray)
-                this.$set(this.dataList[index], 'todoText', value)
-                this.$message({
-                    type: 'success',
-                    message: '修改成功'
-                })
-            }).catch(() => {
-                //取消操作
-                // this.$message({
-                //     type: 'info',
-                //     message: '取消输入'
-                // });       
-            })
+            console.log(index,row,value)
+
+            this.$set(this.dataList[index], 'todoText', value)
+            this.$message.success('修改成功') //弹出提示
+            
         },
-        handleDelete(index,row) {
+        handleDelete(index) {
             //删除
+            console.log(index)
             this.oldList = row //存入需要撤回的数组
             this.oldListIndex = index //存入需要撤回的坐标
             this.dataList.splice(index,1) //删除数组
-            this.openVn('删除成功','success') //弹出提示
+            this.$message.success('删除成功') //弹出提示
 
         },
         handleReturn() {
@@ -143,24 +111,15 @@ export default {
                 _this.dataList.splice(this.oldListIndex,0,this.oldList) //撤回数组
                 _this.oldList = "" //清空
                 _this.oldListIndex = ""
-                _this.openVn('撤回成功','success') //弹出提示
+                _this.$message.success('撤回成功') //弹出提示
             }else if(_this.oldListIndex == '0'){
                 
                 _this.dataList.splice(-1,0,this.oldList)//撤回数组
                 _this.oldList = "" //清空
                 _this.oldListIndex = ""
-                _this.openVn('撤回成功','success') //弹出提示
+                _this.$message.success('撤回成功') //弹出提示
             }
             
-        },
-        openVn(nr,setType) {
-            //提示框
-            this.$message({
-                type: setType,
-                center: true,
-                dangerouslyUseHTMLString: true,
-                message: nr
-            })
         }
     }
 }
@@ -171,12 +130,8 @@ export default {
         width: 100%;
         margin-top: 24px;
     }
-    .delSty{
-        margin-left: 4px;
-    }
-    .mark{
-        line-height: 40px;
-        margin-top: 4px;
-        background-color: transparent !important;
+    .ant-badge{
+        position: relative;
+        display: block;
     }
 </style>

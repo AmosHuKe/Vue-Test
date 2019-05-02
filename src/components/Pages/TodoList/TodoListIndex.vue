@@ -1,11 +1,11 @@
 <template>
     <div id="TodoListIndex">
-        <el-row type="flex" justify="center">
-            <el-col class="text-align" :xs="24" :sm="20" :md="16" :lg="12">
+        <a-row type="flex" justify="center">
+            <a-col :xs="24" :sm="20" :md="16" :lg="12">
                 <h1>TodoList</h1>
                 <TodoList></TodoList>
-            </el-col>
-        </el-row>
+            </a-col>
+        </a-row>
     </div>
 </template>
 
