@@ -76,15 +76,15 @@ module.exports = {
         }, // 设置代理
         before: app => {
             //登录获取token
-            app.post('/oauth/token',(req,res,next)=>{
+            app.post('/oauth/token',(req,res)=>{
                 res.json(LoginData.Token);
             })
             //登录获取用户名再次授权
-            app.post('/users/CurrentUser',(req,res,next)=>{
+            app.post('/users/CurrentUser',(req,res)=>{
                 res.json(LoginData.CurrentUser);
             })
             //退出
-            app.get('/oauth/logout',(req,res,next)=>{
+            app.get('/oauth/logout',(req,res)=>{
                 res.json(LoginData.LogOut);
             })
             
