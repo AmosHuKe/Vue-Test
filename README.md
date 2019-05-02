@@ -48,7 +48,7 @@ npm run build
 │   |   |   ├── css // 样式  
 │   │   ├── user（例）  // 模块划分文件夹  
 │   |   |   ├── css // 样式  
-│   └── MainIndex.vue  // 项目主入口文件  
+│   └── MainIndex.vue  // 项目布局组件  
 ├── plugins  // 项目相关配置及插件文件夹 
 │   └── http  // 网络请求相关配置
 │   └── api  // 接口api
