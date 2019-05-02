@@ -35,7 +35,7 @@ npm run build
 ├── components  // 组件文件夹  
 │   └── Common  // 共用组件文件夹
 │   │   ├── Common.js  // 共用组件
-│   └── Frame  // 头部及侧边栏组件
+│   └── Layout  // 头部及侧边栏（布局）组件
 │   │   ├── Aside  // 侧边栏组件
 │   |   |   ├──MainAside.vue
 │   │   ├── Header  // 头部组件

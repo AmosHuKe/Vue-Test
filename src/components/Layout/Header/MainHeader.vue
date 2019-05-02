@@ -16,8 +16,9 @@
                 @click="setCollapsed()"
               />
               
-            </a-menu-item>
-            <a-sub-menu>
+            </a-menu-item >
+
+            <a-sub-menu class="f-right">
               <span slot="title" class="submenu-title-wrapper"><a-icon type="user" />{{ userName }}</span>
               <a-menu-item-group title="我的">
                 <a-menu-item key="user:1">个人资料</a-menu-item>
@@ -102,6 +103,9 @@ export default {
 }
 .trigger:hover {
   color: #1890ff;
+}
+.f-right{
+  float: right;
 }
 </style>
 
