@@ -63,13 +63,13 @@ module.exports = {
     // webpack-dev-server 相关配置
     devServer: {
         open: process.platform === 'darwin',
-        host: '127.0.0.1',
+        host: 'localhost',
         port: 9099,
         https: false,
         hotOnly: false,
         proxy: {
             "": {
-                target: "http://217.0.0.1:9099",
+                target: "http://localhost:9099",
                 changeOrigin: true, //是否跨域
                 secure: false
             }
