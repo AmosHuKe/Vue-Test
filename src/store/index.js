@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 //modules
-import LoginModule from '@/components/Pages/Login/module/LoginModule.js' //登陆及token
-import AsideModule from '@/components/Layout/Aside/module/AsideModule.js' //侧边菜单
-import TodoListModule from '@/components/Pages/TodoList/module/TodoListModule.js' //TodoList
+import LoginModule from '@/store/module/Login/LoginModule.js' //登陆及token
+import AsideModule from '@/store/module/Aside/AsideModule.js' //侧边菜单
+import TodoListModule from '@/store/module/TodoList/TodoListModule.js' //TodoList
 
 Vue.use(Vuex)
 
