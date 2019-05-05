@@ -1,0 +1,98 @@
+/**
+ * [ 招聘首页 内容CSS ]
+ *
+ */
+.page-body-wrapper{
+    padding-top: 0px !important;
+}
+.content-wrapper {
+    padding: 2.75rem 8rem !important;
+
+}
+/*  大于1080 */
+@media screen and (min-width: 1200px) {
+    .content-wrapper {
+        padding: 2.75rem 18rem !important;
+
+    }
+}
+/*  小于768 */
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        padding: 2.75rem 1rem !important;
+
+    }
+}
+
+
+
+
+/* 轮播图 */
+.layui-carousel{
+    background-color: #f2edf3 !important;
+}
+.content{
+    padding-top: 70px;
+}
+.layui-carousel>[carousel-item]>*{
+    height: auto;
+}
+
+/*  搜索 */
+.search{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.search_input{
+    margin-bottom: 6px;
+}
+.search_text p{
+    margin-top: 1.28px;
+    letter-spacing: 0.8px;
+    line-height: 20px !important;
+}
+.grid-margin, .purchase-popup{
+    margin-bottom: 0px !important;
+}
+
+/* 招聘模块 */
+.recruit_mod{
+    margin-bottom: 24px !important;
+
+}
+.recruit_mod .card{
+    box-shadow: 0 ;
+    transition: all 0.6s;
+        -moz-transition: all 0.6s;	/* Firefox 4 */
+        -webkit-transition: all 0.6s;	/* Safari 和 Chrome */
+        -o-transition: all 0.6s;	/* Opera */
+}
+/*  小于768 */
+@media screen and (max-width: 768px) {
+    .recruit_mod .card{
+        box-shadow: 0 2px 10px rgba(10,16,20,.1);
+        transition: all 0.6s;
+        -moz-transition: all 0.6s;	/* Firefox 4 */
+        -webkit-transition: all 0.6s;	/* Safari 和 Chrome */
+        -o-transition: all 0.6s;	/* Opera */
+    }
+}
+.recruit_mod .card:hover{
+    box-shadow: 0 2px 14px rgba(10,16,20,.12);
+    transition: all 0.6s;
+        -moz-transition: all 0.6s;	/* Firefox 4 */
+        -webkit-transition: all 0.6s;	/* Safari 和 Chrome */
+        -o-transition: all 0.6s;	/* Opera */
+}
+.recruit_mod .card-body{
+    padding: 1.5em 1.5em;
+}
+.recruit_mod a,.recruit_mod a:link,.recruit_mod a:visited,.recruit_mod a:hover,.recruit_mod a:active{
+    text-decoration: none;
+    color:inherit;
+}
+.table td{
+    text-align: left;
+    width: 50%;
+    padding:0.9em 0em !important;
+}

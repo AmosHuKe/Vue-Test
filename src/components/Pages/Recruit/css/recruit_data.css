@@ -1,0 +1,56 @@
+/**
+ * [ 招聘详情 内容CSS ]
+ *
+ */
+.page-body-wrapper{
+    padding-top: 24px !important;
+}
+.card-body{
+    padding: 1.5em 1.5em !important;
+}
+.content-wrapper {
+    padding: 2.75rem 8rem !important;
+
+}
+/*  大于1080 */
+@media screen and (min-width: 1080px) {
+    .content-wrapper {
+        padding: 2.75rem 20rem !important;
+
+    }
+}
+/*  小于768 */
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        padding: 2.75rem 0.4rem !important;
+
+    }
+}
+.recruit_msg{
+    margin-top: 18px;
+}
+
+/* 标题信息 */
+.card-title .row{
+    margin-top: 32px;
+    margin-bottom: 20px;
+}
+h6 > .row{
+    margin-top: 30px;
+}
+.text-muted{
+    font-size: 12px;
+}
+.badge{
+    margin: 6px 6px !important;
+}
+
+/* 工作地址 */
+.purchase-popup{
+    margin-bottom: 0 !important;
+}
+
+/* 表单 */
+.forms-sample{
+    margin: 1.5rem 0em;
+}
