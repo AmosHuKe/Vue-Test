@@ -6,13 +6,9 @@ import NProgress from 'nprogress'; //动画
 import 'nprogress/nprogress.css'; //动画css
 
 // 引入组件
-import Lgoin from "@/components/Pages/Login/Login.vue" //登陆页
 import {
     getUser,
 } from '@/plugins/api/LoginApi/LoginApi.js'; //LoginApi接口
-import MainIndex from "@/components/MainIndex.vue" //主要页面，首页
-import Banner from "@/components/Pages/Banner/Banner.vue" //轮播首页
-import TodoListIndex from "@/components/Pages/TodoList/TodoListIndex.vue" //TodoList 页
 
 // vue 使用 vueRouter
 Vue.use(VueRouter);
@@ -40,7 +36,7 @@ const router = new VueRouter ({
                 requireAuth: true // 添加该字段，表示进入这个路由是不需要验证是否有权限
                 ,index: 0 // 判断动画 值小为父 
             },
-            component: Lgoin
+            component: () => import("@/components/Pages/Login/Login.vue")
         },
         {
             path: "/main", //后台页
@@ -48,11 +44,12 @@ const router = new VueRouter ({
             meta: {
                 index: 1 // 判断动画 值小为父 
             },
-            component: MainIndex,
+            component: () => import("@/components/MainIndex.vue"), //后台框架
             children: [
                 {path:'/',redirect:'/main/banner'}, //默认轮播图页
-                {path: "todolist",name: "todolist",component: TodoListIndex}, //TodoList
-                {path: "banner",name: "banner",component: Banner}, //轮播图页
+                {path: "todolist",name: "todolist",component: () => import("@/components/Pages/TodoList/TodoListIndex.vue")}, //TodoList
+                {path: "banner",name: "banner",component: () => import("@/components/Pages/Banner/Banner.vue")}, //轮播图页
+                {path: "recruit",name: "recruit",component: () => import("@/components/Pages/Recruit/RecruitList")}, //招聘页
             ]
                 
         },

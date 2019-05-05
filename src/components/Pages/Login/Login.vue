@@ -146,7 +146,7 @@ export default {
         ,submitLogin(e) {
             //登录
             var _this = this
-  
+
             _this.$message.destroy() //销毁全局提示
             if(_this.mUserName == ""){
                _this.$message.warning('填写账号')

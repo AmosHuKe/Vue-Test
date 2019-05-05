@@ -19,6 +19,12 @@ const state = {
                     menuName: "TodoList", //子名
                     menuUrl: "/main/todolist", //子URL
                     menuIcon: "ordered-list", //Icon
+                },
+                {
+                    menuId:"1.2",
+                    menuName: "RecruitList", //子名
+                    menuUrl: "/main/recruit", //子URL
+                    menuIcon: "solution", //Icon
                 }
             ]
         },
