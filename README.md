@@ -11,7 +11,7 @@ Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + Mock.j
 ## 启动项目（Nodejs 6.0+）
 ```
 # 克隆项目 
-git clone git@github.com:AmosHuKe/Vue-Test.git  
+git clone https://github.com/AmosHuKe/Vue-Test.git  
   
 # 进入目录  
 cd Vue-Test
