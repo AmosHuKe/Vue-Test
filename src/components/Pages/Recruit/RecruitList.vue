@@ -1,6 +1,5 @@
 <template>
     <div id="RecruitList">
-        <p>招聘 {{ nt }}</p>
         <div class="container-fluid page-body-wrapper">
             <div class="content-wrapper">
 
@@ -71,40 +70,49 @@
                         </div>
                     </div>-->
                     <!-- 招聘内容模块end -->
-                    <!-- 招聘内容模块 -->
-                    <div class="row layui-anim layui-anim-fadein" id="rec">
-                        <div class="col-12 grid-margin recruit_mod">
-                            <a href="recruit_data.html">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <i class="text-primary mdi mdi-account-box"></i>
-                                            <!-- 职位名 -->
-                                            游戏主播
-                                        </h4>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <!-- 薪资 -->
-                                                        ￥10000 - 20000
-                                                    </td>
-                                                    <td>
-                                                        <i class="text-primary mdi mdi-map-marker"></i>
-                                                        <!-- 工作地址 -->
-                                                        重庆市渝北区
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+
+                    <template v-if="recruitList.length > 0">
+                        <template v-for="List in recruitList" >
+                        
+                            <!-- 招聘内容模块 -->
+                            <div class="row layui-anim layui-anim-fadein" id="rec" v-bind:key="List.id">
+                                <div class="col-12 grid-margin recruit_mod">
+                                    <a href="javascript:;" @click="jpUrl(List.id)">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <i class="text-primary mdi mdi-account-box"></i>
+                                                    <!-- 职位名 -->
+                                                    {{ List.title }}
+                                                </h4>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <!-- 薪资 -->
+                                                                {{ List.money }}
+                                                            </td>
+                                                            <td>
+                                                                <i class="text-primary mdi mdi-map-marker"></i>
+                                                                <!-- 工作地址 -->
+                                                                {{ List.address }}
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- 招聘内容模块end -->
+                            </div>
+                            <!-- 招聘内容模块end -->
+                        </template>
+                    </template>
+                    <template v-else>
+                        <p>暂无信息</p>
+                    </template>
                     
                 </div>
                 <!-- 下拉加载提示 -->
@@ -117,21 +125,46 @@
 </template>
 
 <script>
+import {
+    getRecruitList,
+} from '@/plugins/api/RecruitApi/RecruitApi.js'; //RecruitApi接口
+
 export default {
     name: 'RecruitList',
     data() {
         return {
-            nt: "",
+            recruitList: [],
         }
     },
-    created(){
-        this.getRecruit()
+    mounted(){
+        this.getList()
     },
     methods: {
-        getRecruit() {
-            //
-            this.$router.push({path:"/main/recruit?name="+this.$store.getters.getUserData.userAccount})
-            this.nt = this.$route.query.name
+        getList() {
+            //获取招聘列表
+            const _this = this
+            getRecruitList()
+            .then((response)=>{
+                //获取用户信息成功操作
+                if(response.code == 200){
+                    _this.recruitList = response.data
+                }else{
+                    _this.$message.error('获取招聘列表失败')
+                }          
+
+            })
+            .catch(err => {
+                //失败操作 
+               _this.$message.error('获取招聘列表失败')
+            })
+            
+            
+        },
+        jpUrl(id){
+            //跳转到详情页
+            const _this = this
+            console.log(id)
+            //_this.$route.push({path:"/main/"})
         }
     }
 

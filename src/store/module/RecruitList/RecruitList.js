@@ -1,16 +1,16 @@
 //招聘数据
 const state = {
     // token:"", //token
-    listData: [], //招聘基本信息
+    listData: [], //招聘信息列表
 }
 const mutations = {
     // set_Token(state,access_token) {
     //     //赋值token
     //     state.token = access_token;
     // },
-    set_UserData(state,UserData) {
-        //赋值用户信息
-        state.userData = UserData;
+    set_ListData(state,ListData) {
+        //赋值招聘信息列表
+        state.listData = ListData;
     },
 
 } 
@@ -21,9 +21,9 @@ const actions = {
     //     //赋值token
     //     commit("set_Token", access_token);
     // },
-    setUserData ({commit},UserData) {
-        //赋值用户信息
-        commit("set_UserData", UserData);
+    setListData ({commit},ListData) {
+        //赋值招聘信息列表
+        commit("set_ListData", ListData);
     },
 }
 const getters = {

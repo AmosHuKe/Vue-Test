@@ -1,4 +1,4 @@
-import { getUserinfo,post } from '@/plugins/http/axios/axios.js' //引入axios封装方法
+import { fetch,post } from '@/plugins/http/axios/axios.js' //引入axios封装方法
 
 /**
  * 数据请求接口
@@ -10,7 +10,6 @@ const ServiceBaseUrl2 = "S2";
 
 /**
  * 登陆获取Token
- * @param url 请求接口
  * @param username 账号
  * @param password 密码
  * @returns {Promise}

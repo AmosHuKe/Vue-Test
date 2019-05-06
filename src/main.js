@@ -11,6 +11,7 @@ import 'ant-design-vue/dist/antd.less' //ant-design样式
 import Common from '@/components/Common/Common.js' //公共文件
 import router from "@/router/index.js" //路由
 import store from '@/store/index.js' //状态管理
+import '@/plugins/http/mock/mock.js' //mock模拟数据
 
 axios.defaults.withCredentials = false
 Vue.config.productionTip = false

@@ -3,8 +3,6 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 } //绝对路径
 
-//mock 模拟数据
-const LoginData = require('./mock/Login.json');
 
 module.exports = {
     /** 区分打包环境与开发环境
@@ -74,21 +72,7 @@ module.exports = {
                 secure: false
             }
         }, // 设置代理
-        before: app => {
-            //登录获取token
-            app.post('/oauth/token',(req,res)=>{
-                res.json(LoginData.Token);
-            })
-            //登录获取用户名再次授权
-            app.post('/users/CurrentUser',(req,res)=>{
-                res.json(LoginData.CurrentUser);
-            })
-            //退出
-            app.get('/oauth/logout',(req,res)=>{
-                res.json(LoginData.LogOut);
-            })
-            
-        }
+        before: app => {}
     },
     // 第三方插件配置
     pluginOptions: {
