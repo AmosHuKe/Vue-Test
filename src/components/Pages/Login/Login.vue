@@ -146,7 +146,6 @@ export default {
         ,submitLogin(e) {
             //登录
             var _this = this
-
             _this.$message.destroy() //销毁全局提示
             if(_this.mUserName == ""){
                _this.$message.warning('填写账号')
@@ -204,7 +203,7 @@ export default {
                                     _this.$router.push({path: '/main/banner'}) //跳转到后台
                                 },1000)
                             }else{
-                                _this.$router.push({name: 'login'}) //跳转到登陆 
+                                _this.$router.push({path: '/login'}) //跳转到登陆 
                                 _this.loadingLogin(e, false) //关闭锁 
                             }
                             
@@ -214,7 +213,7 @@ export default {
                             //获取用户信息失败操作
                             // reject(err)
                             _this.$message.error('登录失败 '+err)
-                            _this.$router.push({name: 'login'}) //跳转到登陆 
+                            _this.$router.push({path: '/login'}) //跳转到登陆 
                             _this.loadingLogin(e, false) //关闭锁 
                         })
     

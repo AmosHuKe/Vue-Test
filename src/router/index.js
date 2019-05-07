@@ -40,7 +40,6 @@ const router = new VueRouter ({
         },
         {
             path: "/main", //后台页
-            name: "main",
             meta: {
                 index: 1 // 判断动画 值小为父 
             },

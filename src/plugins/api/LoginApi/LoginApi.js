@@ -1,5 +1,4 @@
 import { fetch,post } from '@/plugins/http/axios/axios.js' //引入axios封装方法
-
 /**
  * 数据请求接口
  * S1 正式服务器

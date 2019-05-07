@@ -5,10 +5,10 @@ import Qs from 'qs'
 //import store from '@/store/index.js' //状态管理
 import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
-import { Message } from 'ant-design-vue/es/message' //ant-design
+import Antd from 'ant-design-vue' //ant-design
 
 axios.defaults.timeout = 5000; //超时终止请求
-axios.defaults.baseURL ='http://192.168.1.6:8080/oauth2service/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
+axios.defaults.baseURL ='http://localhost:9099/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';//添加headers
 axios.defaults.transformRequest = [function (data) {
   // 对 data 进行任意转换处理
@@ -39,7 +39,7 @@ axios.interceptors.request.use(
       config.headers.access_token = access_token
     }else{
       //没有token 跳转到首页
-      router.push({name: 'login'}) //跳转到登陆
+      router.push({path: '/login'}) //跳转到登陆
     }
 
     /**
@@ -57,7 +57,7 @@ axios.interceptors.request.use(
   },
   error => {
     //错误跳转到首页
-    router.push({name: 'login'}) //跳转到登陆
+    router.push({path: '/login'}) //跳转到登陆
     return Promise.reject(error);
   }
 );
@@ -82,7 +82,7 @@ axios.interceptors.response.use(
       path:"/",
       querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
     })
-    Message.error('无权访问，请重新登陆')
+    Antd.message.error('无权访问，请重新登陆')
     return Promise.reject(error)
   }
 )
