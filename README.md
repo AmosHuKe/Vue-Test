@@ -5,7 +5,7 @@
 ```
 非常基础的 Vue2.0 练习
 
-Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + Mock.js + Less
+Node.js + Vue2.0 + Ant-Design + Vue-Router + Vuex + Axios + Vue-Cookies + Mock + Less
 ```
 
 ## 启动项目（Nodejs 6.0+）

@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <!-- 搜索end -->
-
+                
                 <div class="recruit_zp">
                     <!-- 招聘内容模块 -->
                     <!--<div class="row layui-anim layui-anim-fadein" id="rec">
@@ -111,7 +111,43 @@
                         </template>
                     </template>
                     <template v-else>
-                        <p>暂无信息</p>
+                        <template v-for="List in 4" >
+                            <!-- 招聘内容模块 -->
+                            <div class="row layui-anim layui-anim-fadein" id="rec" v-bind:key="List" v-if="reLoading">
+                                <div class="col-12 grid-margin recruit_mod">
+                                    <a href="javascript:;" >
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="">
+                                                    <i class="text-primary mdi mdi-account-box"></i>
+                                                    <!-- 职位名 -->
+                                                    <a-skeleton active :paragraph="{rows: 0}" />
+                                                </h4>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td style="padding:0em 0em ;">
+                                                                <!-- 薪资 -->
+                                                                <a-skeleton active :paragraph="{rows: 0}" />
+                                                            </td>
+                                                            <td style="padding:0em 0em ;">
+                                                                <i class="text-primary mdi mdi-map-marker"></i>
+                                                                <!-- 工作地址 -->
+                                                                <a-skeleton active :paragraph="{rows: 0}" />
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                        </div>
+                        </template>
+                        <!-- 招聘内容模块end -->
+                        <p v-if="!reLoading">暂无信息</p>
                     </template>
                     
                 </div>
@@ -133,7 +169,8 @@ export default {
     name: 'RecruitList',
     data() {
         return {
-            recruitList: [],
+            recruitList: [], //招聘列表
+            reLoading: true, //占位符是否开启
         }
     },
     mounted(){
@@ -148,6 +185,7 @@ export default {
                 //获取用户信息成功操作
                 if(response.code == 200){
                     _this.recruitList = response.data
+                    _this.reLoading = false
                 }else{
                     _this.$message.error('获取招聘列表失败')
                 }          
@@ -155,7 +193,7 @@ export default {
             })
             .catch(err => {
                 //失败操作 
-               _this.$message.error('获取招聘列表失败')
+               _this.$message.error('获取招聘列表失败#1')
             })
             
             
