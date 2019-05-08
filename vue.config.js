@@ -91,6 +91,7 @@ module.exports = {
             
             //获取招聘列表
             app.post('/getRecruitList',(req,res)=>{
+                //console.log(req.query);
                 setTimeout(() => {
                    res.json(RecruitData.List); 
                 }, 5000);

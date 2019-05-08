@@ -7,7 +7,7 @@ import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
 import Antd from 'ant-design-vue' //ant-design
 
-axios.defaults.timeout = 5000; //超时终止请求
+axios.defaults.timeout = 10000; //超时终止请求
 axios.defaults.baseURL ='http://localhost:9099/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';//添加headers
 axios.defaults.transformRequest = [function (data) {
@@ -39,7 +39,7 @@ axios.interceptors.request.use(
       config.headers.access_token = access_token
     }else{
       //没有token 跳转到首页
-      router.push({path: '/login'}) //跳转到登陆
+      router.push({path: '/'}) //跳转到登陆
     }
 
     /**
@@ -57,7 +57,7 @@ axios.interceptors.request.use(
   },
   error => {
     //错误跳转到首页
-    router.push({path: '/login'}) //跳转到登陆
+    router.push({path: '/'}) //跳转到登陆
     return Promise.reject(error);
   }
 );

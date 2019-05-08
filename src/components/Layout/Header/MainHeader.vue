@@ -72,7 +72,7 @@ export default {
                 //删除cookie
                 //console.log(response);
                 _this.$cookies.remove("userInfo")
-                _this.$router.push({path:"/login"}) //跳转登陆页
+                _this.$router.push({path:"/"}) //跳转登陆页
                 _this.$message.success('退出成功')
             })
             .catch(err => {

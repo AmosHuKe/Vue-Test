@@ -4,11 +4,11 @@
             <div class="content-wrapper">
 
                 <!-- 搜索 -->
-                <div class="row search_main">
+                <!-- <div class="row search_main">
                     <div class="col-12 grid-margin">
 
                         <div class="form-group">
-                            <!-- 搜索框-->
+                             搜索框
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="input-group search_input">
@@ -20,7 +20,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--  描述 -->
+                                  描述 
                                 <div class="col-md-6">
                                         <span class="d-flex align-items-center purchase-popup search_text">
                                             <p class="text-dark">主播招募！期待你的加入，我们将给你最优质的平台！</p>
@@ -32,7 +32,7 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
                 <!-- 搜索end -->
                 
                 <div class="recruit_zp">
@@ -81,7 +81,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">
-                                                    <i class="text-primary mdi mdi-account-box"></i>
+                                                    <a-icon type="user" />
                                                     <!-- 职位名 -->
                                                     {{ List.title }}
                                                 </h4>
@@ -94,7 +94,7 @@
                                                                 {{ List.money }}
                                                             </td>
                                                             <td>
-                                                                <i class="text-primary mdi mdi-map-marker"></i>
+                                                                <a-icon type="environment" />
                                                                 <!-- 工作地址 -->
                                                                 {{ List.address }}
                                                             </td>
