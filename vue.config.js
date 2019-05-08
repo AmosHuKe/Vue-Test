@@ -77,20 +77,20 @@ module.exports = {
         }, // 设置代理
         before: app => {
             //登录获取token
-            app.post('/oauth/token',(req,res)=>{
+            app.post('/oauth/token',(req,res,next)=>{
                 res.json(LoginData.Token);
             })
             //登录获取用户名再次授权
-            app.post('/users/CurrentUser',(req,res)=>{
+            app.post('/users/CurrentUser',(req,res,next)=>{
                 res.json(LoginData.CurrentUser);
             })
             //退出
-            app.get('/oauth/logout',(req,res)=>{
+            app.get('/oauth/logout',(req,res,next)=>{
                 res.json(LoginData.LogOut);
             })
             
             //获取招聘列表
-            app.post('/getRecruitList',(req,res)=>{
+            app.post('/getRecruitList',(req,res,next)=>{
                 //console.log(req.query);
                 setTimeout(() => {
                    res.json(RecruitData.List); 

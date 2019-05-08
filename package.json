@@ -13,7 +13,6 @@
     "babel-plugin-import": "^1.11.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",
     "vue": "^2.6.6",
     "vue-cookies": "^1.5.13",

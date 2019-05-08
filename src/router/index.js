@@ -81,9 +81,8 @@ router.beforeEach((to, from, next) => {
                 .then((response)=>{
                     //获取用户信息成功操作
                     if(response.code == 200){
-                    store.dispatch("setUserData",response.data) //存入store
-                    console.log(response)
-                    next(); //继续跳转
+                        store.dispatch("setUserData",response.data) //存入store
+                        next(); //继续跳转
                     }else{
                         next({
                             path: '/',

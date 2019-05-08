@@ -18,7 +18,6 @@ Vue.config.productionTip = false
 Vue.use(VueCookies); //使用VueCookies
 Vue.use(Antd); //使用ant-design
 
-
 Vue.prototype.Common = Common; //配置全局使用公共文件
 
 //全局配置axios
