@@ -1,11 +1,13 @@
 
+import Vue from 'vue'
 import axios from 'axios';
 // 引入 Qs是为了把json格式，转为formdata 的数据格式
 import Qs from 'qs'
 //import store from '@/store/index.js' //状态管理
 import router from "@/router/index.js" //路由
 import VueCookies from 'vue-cookies'
-import Antd from 'ant-design-vue' //ant-design
+import Message from 'ant-design-vue/lib/message';  // 加载 JS
+import 'ant-design-vue/lib/message/style/css';        // 加载 CSS
 
 axios.defaults.timeout = 10000; //超时终止请求
 axios.defaults.baseURL ='http://localhost:9099/'; //配置请求地址 http://192.168.1.5:8080/oauth2service/
@@ -34,8 +36,6 @@ axios.interceptors.request.use(
     if(access_token != null && access_token != ""){
       //如果有token,将默认传入每次请求的数据中
       //console.log(config)
-      
-      
       config.headers.access_token = access_token
     }else{
       //没有token 跳转到首页
@@ -76,13 +76,15 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
+    
     //删除cookie
     VueCookies.remove("userInfo") //防止服务器token过期时的无限请求失败
     router.push({
       path:"/",
       querry:{redirect:router.currentRoute.fullPath}//从哪个页面跳转
     })
-    Antd.message.error('无权访问，请重新登陆')
+    Message.destroy() //销毁全局提示
+    Message.error('无权访问，请重新登陆')
     return Promise.reject(error)
   }
 )

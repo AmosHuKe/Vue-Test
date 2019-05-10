@@ -80,14 +80,17 @@ module.exports = {
             app.post('/oauth/token',(req,res,next)=>{
                 res.json(LoginData.Token);
             })
+
+            //退出
+            app.get('/oauth/logout',(req,res,next)=>{
+                res.json(LoginData.LoginOut);
+            })
+
             //登录获取用户名再次授权
             app.post('/users/CurrentUser',(req,res,next)=>{
                 res.json(LoginData.CurrentUser);
             })
-            //退出
-            app.get('/oauth/logout',(req,res,next)=>{
-                res.json(LoginData.LogOut);
-            })
+            
             
             //获取招聘列表
             app.post('/getRecruitList',(req,res,next)=>{
