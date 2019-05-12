@@ -29,6 +29,12 @@ Vue.prototype.$fetch=fetch;
 Vue.prototype.$patch=patch;
 Vue.prototype.$put=put;
 
+// 注册为全局过滤器
+import {
+  FormatMoney, 
+} from '@/plugins/filters/filters.js'; //过滤器
+Vue.filter('FormatMoney', FormatMoney)
+
 
 new Vue({
   router, //配置路由

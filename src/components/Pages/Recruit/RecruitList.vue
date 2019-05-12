@@ -91,7 +91,7 @@
                                                         <tr>
                                                             <td>
                                                                 <!-- 薪资 -->
-                                                                {{ List.money }}
+                                                                {{ List.money | FormatMoney }}
                                                             </td>
                                                             <td>
                                                                 <a-icon type="environment" />
