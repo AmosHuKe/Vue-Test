@@ -184,38 +184,47 @@ export default {
                     .then((response)=>{
                         //成功操作
                         console.log(response)
-                        let cookiesData= {
-                            "refresh_token" : response.refresh_token
-                            ,"access_token" : response.access_token
-                            ,"username" : _this.mUserName
-                        }
-                        getUser(cookiesData.access_token) //获取用户信息并再次授权服务器
-                        .then((response)=>{
-                            //获取用户信息成功操作
-                            if(response.code == 200){
-                                _this.$store.dispatch("setUserData",response.data)    
-                                _this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
-                                //getSussce(this.$cookies.get("userInfo").access_token)
-                                _this.$message.success('登录成功')
-                                //console.log(getUser().id) //弹出获取的用户
-                                //_this.loadingLogin(e, false) //关闭锁
-                                setTimeout(() =>{
-                                    _this.$router.push({path: '/main/banner'}) //跳转到后台
-                                },1000)
-                            }else{
+                        if(response.code == "200"){
+                            //登陆成功200
+                            let cookiesData= {
+                                "refresh_token" : response.refresh_token
+                                ,"access_token" : response.access_token
+                                ,"username" : _this.mUserName
+                            }
+                            getUser(cookiesData.access_token) //获取用户信息并再次授权服务器
+                            .then((response)=>{
+                                //获取用户信息成功操作
+                                if(response.code == 200){
+                                    _this.$store.dispatch("setUserData",response.data)    
+                                    _this.$cookies.set("userInfo",cookiesData) //存入cookie 防止刷新后没有store的值
+                                    //getSussce(this.$cookies.get("userInfo").access_token)
+                                    _this.$message.success('登录成功')
+                                    //console.log(getUser().id) //弹出获取的用户
+                                    //_this.loadingLogin(e, false) //关闭锁
+                                    setTimeout(() =>{
+                                        _this.$router.push({path: '/main/banner'}) //跳转到后台
+                                    },1000)
+                                }else{
+                                    _this.$router.push({path: '/'}) //跳转到登陆 
+                                    _this.loadingLogin(e, false) //关闭锁 
+                                }
+                                
+            
+                            })
+                            .catch(err => {
+                                //获取用户信息失败操作
+                                // reject(err)
+                                _this.$message.error('登录失败 '+err)
                                 _this.$router.push({path: '/'}) //跳转到登陆 
                                 _this.loadingLogin(e, false) //关闭锁 
-                            }
-                            
-        
-                        })
-                        .catch(err => {
-                            //获取用户信息失败操作
-                            // reject(err)
-                            _this.$message.error('登录失败 '+err)
+                            })
+                        }else{
+                            //登陆失败其他代码如10000
+                            _this.$message.error(response.message)
                             _this.$router.push({path: '/'}) //跳转到登陆 
                             _this.loadingLogin(e, false) //关闭锁 
-                        })
+                        }
+                        
     
                     })
                     .catch(err => {
