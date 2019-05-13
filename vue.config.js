@@ -76,6 +76,9 @@ module.exports = {
             }
         }, // 设置代理
         before: app => {
+            let bodyParser = require('body-parser')
+            app.use(bodyParser.urlencoded({ extended: false }))
+
             //登录获取token
             app.post('/oauth/token',(req,res,next)=>{
                 res.json(LoginData.Token);
@@ -94,10 +97,25 @@ module.exports = {
             
             //获取招聘列表
             app.post('/getRecruitList',(req,res,next)=>{
-                //console.log(req.query);
+                //console.log(req.body);
                 setTimeout(() => {
                    res.json(RecruitData.List); 
                 }, 5000);
+                
+            })
+
+            //获取招聘内容
+            app.post('/getRecruitData',(req,res,next)=>{
+                var newData = "";
+                for(i=0; i< RecruitData.List.data.length; i++){
+                    console.log(RecruitData.List[i])
+                    if(RecruitData.List.data[i].id == req.body.rId){
+                        newData = RecruitData.List.data[i];
+                    }
+                }
+                setTimeout(() => {
+                    res.json(newData); 
+                }, 1000);
                 
             })
 

@@ -49,6 +49,7 @@ const router = new VueRouter ({
                 {path: "todolist",name: "todolist",component: () => import("@/components/Pages/TodoList/TodoListIndex.vue")}, //TodoList
                 {path: "banner",name: "banner",component: () => import("@/components/Pages/Banner/Banner.vue")}, //轮播图页
                 {path: "recruit",name: "recruit",component: () => import("@/components/Pages/Recruit/RecruitList")}, //招聘页
+                {path: "recruitData/:id",name: "recruitData",component: () => import("@/components/Pages/Recruit/RecruitData")}, //招聘详情
             ]
                 
         },

@@ -18,3 +18,17 @@ export function getRecruitList(){
     let e = post("/getRecruitList",datas);
     return e;
 }
+
+/**
+ * 获取招聘内容
+ * @param rId Id
+ * @returns {Promise}
+ */
+export function getRecruitData(rId){
+    let datas = {
+        ServiceBaseUrl: ServiceBaseUrl1, //使用服务器
+        rId: rId, //ID
+    }
+    let e = post("/getRecruitData",datas);
+    return e;
+}
