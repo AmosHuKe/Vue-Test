@@ -6,31 +6,82 @@
                 "id":0,
                 "title": "JAVA程序员0",
                 "money": "10000 - 20000",
-                "address": "重庆市渝北区"
+                "address": "重庆市渝北区",
+                "requirement": "2",
+                "gender": "男",
+                "age": "18-20",
+                "welfare": "高温补贴,无限放假,免费送房,免费送车,产假,零食小吃,独立休息室",
+                "addr": "重庆市渝北区XXX街道",
+                "contacts": "AmosHuKe",
+                "contactsPhone": "10086",
+                "contactsEmailTest": "amoshuke@gmail.com",
+                "content": "<p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p>"
+
+
             },
             {
                 "id":1,
                 "title": "JAVA程序员1",
                 "money": "10000 - 20000",
-                "address": "重庆市渝北区"
+                "address": "重庆市渝北区",
+                "requirement": "20",
+                "gender": "女",
+                "age": "18-20",
+                "welfare": "高温补贴,无限放假,免费送房,免费送车,产假,零食小吃,独立休息室",
+                "addr": "重庆市渝北区XXX街道",
+                "contacts": "AmosHuKe",
+                "contactsPhone": "10086",
+                "contactsEmailTest": "amoshuke@gmail.com",
+                "content": "<p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p>"
+
             },
             {
                 "id":2,
                 "title": "JAVA程序员2",
                 "money": "10000 - 20000",
-                "address": "重庆市渝北区"
+                "address": "重庆市渝北区",
+                "requirement": "4",
+                "gender": "不限",
+                "age": "18-20",
+                "welfare": "高温补贴,无限放假,免费送房,免费送车,产假,零食小吃,独立休息室",
+                "addr": "重庆市渝北区XXX街道",
+                "contacts": "AmosHuKe",
+                "contactsPhone": "10086",
+                "contactsEmailTest": "amoshuke@gmail.com",
+                "content": "<p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p>"
+
             },
             {
                 "id":3,
                 "title": "JAVA程序员3",
                 "money": "10000 - 20000",
-                "address": "重庆市渝北区"
+                "address": "重庆市渝北区",
+                "requirement": "2",
+                "gender": "男",
+                "age": "18-20",
+                "welfare": "高温补贴,无限放假,免费送房,免费送车,产假,零食小吃,独立休息室",
+                "addr": "重庆市渝北区XXX街道",
+                "contacts": "AmosHuKe",
+                "contactsPhone": "10086",
+                "contactsEmailTest": "amoshuke@gmail.com",
+                "content": "<p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p>"
+
             },
             {
                 "id":4,
                 "title": "JAVA程序员4",
                 "money": "10000 - 20000",
-                "address": "重庆市渝北区"
+                "address": "重庆市渝北区",
+                "requirement": "2",
+                "gender": "男",
+                "age": "18-20",
+                "welfare": "高温补贴,无限放假,免费送房,免费送车,产假,零食小吃,独立休息室",
+                "addr": "重庆市渝北区XXX街道",
+                "contacts": "AmosHuKe",
+                "contactsPhone": "10086",
+                "contactsEmailTest": "amoshuke@gmail.com",
+                "content": "<p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p><p>这里可以写HTML格式的描述啦啦啦</p>"
+
             }
         ]
     }

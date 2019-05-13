@@ -163,7 +163,6 @@
 <script>
 import {
     getRecruitList,
-    getRecruitData,
 } from '@/plugins/api/RecruitApi/RecruitApi.js'; //RecruitApi接口
 
 export default {
@@ -204,25 +203,9 @@ export default {
             const _this = this
 
             this.$router.push({
-                path: '/main/recruit',
-                params: {
-                    id: id
-                }
+                path: '/main/recruit/'+id,
             })
             
-            console.log(this.$route.params.id)
-            getRecruitData(id)
-            .then((response)=>{
-                //获取用户信息成功操作
-               console.log(response)       
-
-            })
-            .catch(err => {
-                //失败操作 
-               _this.$message.error('获取招聘列表失败#1')
-            })
-            
-            //_this.$route.push({path:"/main/"})
         }
     }
 

@@ -32,8 +32,10 @@ Vue.prototype.$put=put;
 // 注册为全局过滤器
 import {
   FormatMoney, 
+  iconSex,
 } from '@/plugins/filters/filters.js'; //过滤器
 Vue.filter('FormatMoney', FormatMoney)
+Vue.filter('iconSex', iconSex)
 
 
 new Vue({

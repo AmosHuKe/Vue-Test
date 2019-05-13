@@ -3,7 +3,7 @@
  *
  */
 .page-body-wrapper{
-    padding-top: 24px !important;
+    padding-top: 0px !important;
 }
 .card-body{
     padding: 1.5em 1.5em !important;
@@ -13,16 +13,16 @@
 
 }
 /*  大于1080 */
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1200px) {
     .content-wrapper {
-        padding: 2.75rem 20rem !important;
+        padding: 2.75rem 18rem !important;
 
     }
 }
 /*  小于768 */
 @media screen and (max-width: 768px) {
     .content-wrapper {
-        padding: 2.75rem 0.4rem !important;
+        padding: 2.75rem 1rem !important;
 
     }
 }
