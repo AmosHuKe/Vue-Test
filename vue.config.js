@@ -1,4 +1,4 @@
-let path = require('path')
+﻿let path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
 } //绝对路径
@@ -89,7 +89,7 @@ module.exports = {
                 }else{
                     res.json({
                         "code":"10000",
-                        "message":"账号或密码不正确"
+                        "message":"账号或密码不正确，账号密码：admin"
                     });
                 }
                 
