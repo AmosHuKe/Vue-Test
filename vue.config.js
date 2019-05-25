@@ -119,7 +119,7 @@ module.exports = {
             //获取招聘内容
             app.post('/getRecruitData',(req,res,next)=>{
                 var newData = "";
-                for(i=0; i< RecruitData.List.data.length; i++){
+                for(let i=0; i< RecruitData.List.data.length; i++){
                     if(RecruitData.List.data[i].id == req.body.rId){
                         newData = RecruitData.List.data[i];
                     }
