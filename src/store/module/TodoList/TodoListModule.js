@@ -4,6 +4,7 @@ const state = {
     /**
      * 具体Todolist数据
     [{
+        id:0,
         todoText: _this.inputText,
         todoTime: dateTime,
         showDel: false, //确定删除是否显示
@@ -17,6 +18,7 @@ const mutations = {
     set_DataList(state,dataList) {
         //赋值
         state.dataList.push(dataList);
+        state.dataListCount++;
     },
     // set_Updatedata(state,dataListArray){
     //     //修改内容
@@ -41,8 +43,11 @@ const getters = {
     getDataList(state){
         //取值
         return state.dataList;
+    },
+    getDataListCount(state){
+        //取值
+        return state.dataListCount;
     }
-
 }
 
 //暴露出去
