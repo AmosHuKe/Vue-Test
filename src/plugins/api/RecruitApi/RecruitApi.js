@@ -15,7 +15,7 @@ export function getRecruitList(){
     let datas = {
         ServiceBaseUrl: ServiceBaseUrl1, //使用服务器
     }
-    let e = post("/getRecruitList",datas);
+    let e = post("getRecruitList",datas);
     return e;
 }
 
@@ -29,6 +29,6 @@ export function getRecruitData(rId){
         ServiceBaseUrl: ServiceBaseUrl1, //使用服务器
         rId: rId, //ID
     }
-    let e = post("/getRecruitData",datas);
+    let e = post("getRecruitData",datas);
     return e;
 }

@@ -50,7 +50,7 @@ axios.interceptors.request.use(
     if(ServiceBaseUrl == "S1"){
       config.baseURL= 'http://192.168.1.6:8080/oauth2service/' //正式服务器地址
     }else if(ServiceBaseUrl == "S2"){
-      config.baseURL= 'http://localhost:9099' //测试mock
+      config.baseURL= 'https://www.easy-mock.com/mock/5d4b7fb529c34f4d060af6ec/Vue-Test/' //测试mock
     }
 
     return config;

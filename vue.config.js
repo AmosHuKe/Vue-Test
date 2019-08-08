@@ -3,10 +3,6 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 } //绝对路径
 
-//mock 模拟数据
-const LoginData = require('./mock/Login.json');
-const RecruitData = require('./mock/Recruit.json');
-
 module.exports = {
     /** 区分打包环境与开发环境
      * process.env.NODE_ENV==='production'  (打包环境)
@@ -76,59 +72,7 @@ module.exports = {
             }
         }, // 设置代理
         before: app => {
-            let bodyParser = require('body-parser')
-            app.use(bodyParser.urlencoded({ extended: false }))
 
-            //登录获取token
-            app.post('/oauth/token',(req,res,next)=>{
-                const username = req.body.username //用户名
-                const password = req.body.password //密码
-
-                if(username=="admin" && password=="admin"){
-                    res.json(LoginData.Token);
-                }else{
-                    res.json({
-                        "code":"10000",
-                        "message":"账号或密码不正确，账号密码：admin"
-                    });
-                }
-                
-                   
-            })
-
-            //退出
-            app.get('/oauth/logout',(req,res,next)=>{
-                res.json(LoginData.LoginOut);
-            })
-
-            //登录获取用户名再次授权
-            app.post('/users/CurrentUser',(req,res,next)=>{
-                res.json(LoginData.CurrentUser);
-            })
-            
-            
-            //获取招聘列表
-            app.post('/getRecruitList',(req,res,next)=>{
-                //console.log(req.body);
-                setTimeout(() => {
-                   res.json(RecruitData.List); 
-                }, 3000);
-                
-            })
-
-            //获取招聘内容
-            app.post('/getRecruitData',(req,res,next)=>{
-                var newData = "";
-                for(let i=0; i< RecruitData.List.data.length; i++){
-                    if(RecruitData.List.data[i].id == req.body.rId){
-                        newData = RecruitData.List.data[i];
-                    }
-                }
-                setTimeout(() => {
-                    res.json(newData); 
-                }, 3000);
-                
-            })
 
         }
     },

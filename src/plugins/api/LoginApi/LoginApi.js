@@ -23,7 +23,8 @@ export function getToken(username,password){
         // client_secret: 'secret',
         //access_token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiKiJdLCJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE1NTQxOTkzNjEsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiZDgwZjYxMzMtYWUzZS00N2M4LTk3ZGYtYjhlMTVmOTc5ODYyIiwiY2xpZW50X2lkIjoiY2xpZW50XzIifQ.IfF9WsfPArWN3AbibV9a1sF3cTKDvacOauKaA5ceieU"
     }
-    let e = post("/oauth/token",datas);
+    
+    let e = post("oauth/token",datas);
     return e;
 }
 
@@ -36,7 +37,7 @@ export function getUser(access_token){
         ServiceBaseUrl: ServiceBaseUrl1, //使用服务器
         access_token: access_token,
     }
-    let e = post("/users/CurrentUser",datas);
+    let e = post("users/CurrentUser",datas);
     return e;
 }
 
@@ -48,7 +49,7 @@ export function loginOut(access_token){
         ServiceBaseUrl: ServiceBaseUrl1, //使用服务器
         access_token: access_token,
     }
-    let e = fetch("/oauth/logout",datas);
+    let e = fetch("oauth/logout",datas);
     return e;
 }
 

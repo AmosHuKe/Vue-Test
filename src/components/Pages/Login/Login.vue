@@ -155,6 +155,11 @@ export default {
                 _this.$message.warning('填写密码')
                 return false
             }
+            //简单模拟账号
+            if(_this.mUserName!="admin" || _this.mPassWord!="admin"){
+                _this.$message.warning('账号或密码不正确，账号密码：admin')
+                return false
+            }
             if(_this.submitL){
                 //判断是否已经点击登录 防止重复请求登录
                 _this.loadingLogin(e, true) //开启锁
@@ -179,6 +184,7 @@ export default {
                     //     _this.$router.push({path: '/main/banner'}) //跳转到后台 用作测试直接登陆
                     // }, 2000)
 
+                    
                     // 实际情况
                     getToken(_this.mUserName, _this.mPassWord) //登陆接口
                     .then((response)=>{
